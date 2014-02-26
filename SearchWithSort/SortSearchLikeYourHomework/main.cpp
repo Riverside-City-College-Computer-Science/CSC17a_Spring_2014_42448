@@ -2,6 +2,7 @@
  * File:   main.cpp
  * Author: Dr. Mark E. Lehr
  * Created on February 24, 2014, 12:58 PM
+ * This has been added to the Github repository
  */
 
 //System Libraries
@@ -24,7 +25,7 @@ int main(int argc, char** argv) {
     //Set the random seed
     srand(static_cast<unsigned int>(time(0)));
     //Declare variables
-    const int SIZE=100;
+    const int SIZE=200;
     int array[SIZE],brray[SIZE];
     //Fill the array
     filAray(array,SIZE);
