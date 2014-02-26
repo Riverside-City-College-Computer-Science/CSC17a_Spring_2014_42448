@@ -1,7 +1,7 @@
 /* Bradd Carey
  * 26 Feb 2014
  * 
- * Commit Test3
+ * 
  */
 
 //Libraries
@@ -45,13 +45,13 @@ void menu(){
         cout<<"************************************************************************"
             <<"\nWelcome to Bradd's Assignment 1 - CSC17A - 42448"
             <<"\n----------------------------------------------------------------------"
-            <<"\n[1]  24hr Time Converter - Savitch 5.1"
-            <<"\n[2]  Waiting Calculator - Savitch 5.2" 
-            <<"\n[3]  Waiting Calculator (12hr format) Savitch 5.3"            
-            <<"\n[4]  Change by Coin - Savtich 5.5"            
-            <<"\n[5]  Deviation Calculator  - Savitch 5.4"           
-            <<"\n[6]  Pounds to Kilograms - Savitch 5.9"           
-            <<"\n[7]  Kilograms to Pounds - Savitch 5.10";
+            <<"\n[1]  Monthly Sales Tax - Gaddis 3.12"
+            <<"\n[2]  Monthly Sales Tax - Gaddis 3.13" 
+            <<"\n[3]  Monthly Sales Tax - Gaddis 4.10"            
+            <<"\n[4]  Monthly Sales Tax - Gaddis 5.11"            
+            <<"\n[5]  Monthly Sales Tax - Gaddis 6.7"           
+            <<"\n[6]  Monthly Sales Tax - Gaddis 7.6"           
+            <<"\n[7]  Monthly Sales Tax - Gaddis 8.7";
         do{
             cout<<"\n-----------------------------------------------------------------------"
                 <<"\nPlease Enter the number of the program you'd like to use:  ";
@@ -93,7 +93,9 @@ bool repeat(int c){
     
 }
 void program1(){
-    
+    /*Write a program that asks for five test scores. The program should calculate the average
+        test score and display it. The number displayed should be formatted in fixed-point
+        notation, with one decimal point of precision.*/
     cout<<"\n************************************************"; 
     cout<<"\n**  Welcome to 24hr Time Calculator   **********";
     cout<<"\n************************************************\n";
