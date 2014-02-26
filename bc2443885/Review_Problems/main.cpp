@@ -45,13 +45,13 @@ void menu(){
         cout<<"************************************************************************"
             <<"\nWelcome to Bradd's Assignment 1 - CSC17A - 42448"
             <<"\n----------------------------------------------------------------------"
-            <<"\n[1]  Monthly Sales Tax - Gaddis 3.12"
-            <<"\n[2]  Monthly Sales Tax - Gaddis 3.13" 
-            <<"\n[3]  Monthly Sales Tax - Gaddis 4.10"            
-            <<"\n[4]  Monthly Sales Tax - Gaddis 5.11"            
-            <<"\n[5]  Monthly Sales Tax - Gaddis 6.7"           
-            <<"\n[6]  Monthly Sales Tax - Gaddis 7.6"           
-            <<"\n[7]  Monthly Sales Tax - Gaddis 8.7";
+            <<"\n[1]  Monthly Sales Tax    - Gaddis 3.12"
+            <<"\n[2]  Property Tax         - Gaddis 3.13" 
+            <<"\n[3]  Software Sales       - Gaddis 4.10"            
+            <<"\n[4]  Population           - Gaddis 5.11"            
+            <<"\n[5]  Celsius Temp Table   - Gaddis 6.7"           
+            <<"\n[6]  Number Analysis      - Gaddis 7.6"           
+            <<"\n[7]  Binary String Search - Gaddis 8.7";
         do{
             cout<<"\n-----------------------------------------------------------------------"
                 <<"\nPlease Enter the number of the program you'd like to use:  ";
@@ -93,13 +93,10 @@ bool repeat(int c){
     
 }
 void program1(){
-    /*Write a program that asks for five test scores. The program should calculate the average
-        test score and display it. The number displayed should be formatted in fixed-point
-        notation, with one decimal point of precision.*/
     cout<<"\n************************************************"; 
-    cout<<"\n**  Welcome to 24hr Time Calculator   **********";
-    cout<<"\n************************************************\n";
-    cout<<"This program will convert military time to standard.\n";
+    cout<<"\n**  Monthly Sales Tax **************************";
+    cout<<"\n************************************************";
+    cout<<"\n\n";
     do{
         
     }while(repeat(1)); 
@@ -107,54 +104,54 @@ void program1(){
 void program2(){
     int hours, mins, waitH, waitM, days;
     cout<<"\n************************************************"; 
-    cout<<"\n**  Welcome to Waiting Calculator   ************";
+    cout<<"\n**  Property Tax   *****************************";
     cout<<"\n************************************************";
-    cout<<"\nThis program will calculate what time it will be after a waiting period.\n";
+    cout<<"\n\n";
     do{
         
     }while(repeat(1)); 
 }
 void program3(){
     cout<<"\n************************************************"; 
-    cout<<"\n**  Welcome to Waiting Calculator (12hr)   *****";
+    cout<<"\n**  Software Sales   ***************************";
     cout<<"\n************************************************";
-    cout<<"\nThis program will calculate what time it will be after a waiting period.\n";
+    cout<<"\n\n";
     do{
         
     }while(repeat(1)); 
 }
 void program4(){
     cout<<"\n************************************************"; 
-    cout<<"\n**  Welcome to Change Calculator   *************";
+    cout<<"\n**  Population   *******************************";
     cout<<"\n************************************************";
-    cout<<"\nThis program will tell you how to give change in the fewest coins.\n";
+    cout<<"\n\n";
     do{
         
     }while(repeat(1)); 
 }
 void program5(){
     cout<<"\n************************************************"; 
-    cout<<"\n**  Welcome to Deviation Calculator   **********";
+    cout<<"\n**  Celsius Temperature Table   ****************";
     cout<<"\n************************************************";
-    cout<<"\nThis program calculates the average and standard deviation.\n";
+    cout<<"\n\n";
     do{
         
     }while(repeat(1)); 
 }
 void program6(){
     cout<<"\n************************************************"; 
-    cout<<"\n**  Welcome to Pounds to Kilograms   ***********";
+    cout<<"\n**  Number Analysis Program   ******************";
     cout<<"\n************************************************";
-    cout<<"\nThis program takes input in pounds and ounces and converts it to metric.\n";
+    cout<<"\n\n";
     do{
         
     }while(repeat(1)); 
 }
 void program7(){
     cout<<"\n************************************************"; 
-    cout<<"\n**  Welcome to Kilograms to Pounds   ***********";
+    cout<<"\n**  Binary String Search   *********************";
     cout<<"\n************************************************";
-    cout<<"\nThis program takes input in kilograms and grams and converts it to US Standard.\n";
+    cout<<"\n\n";
     do{
         
     }while(repeat(1)); 
