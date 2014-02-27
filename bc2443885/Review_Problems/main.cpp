@@ -28,8 +28,6 @@ void program7();
 //Sub Function Prototypes
 int isNum(string);  //Returns 0 if invalid and program number if valid
 
-
-
 int main(int argc, char** argv) {
     
     menu();
@@ -147,9 +145,26 @@ void program3(){
     cout<<"\n************************************************"; 
     cout<<"\n**  Software Sales   ***************************";
     cout<<"\n************************************************";
-    cout<<"\n\n";
+    cout<<"\nThis program calculates discounts on package sales.\n";
+    
+    int sales;
+    
     do{
-        
+        do{
+            cout<<"\nEnter the number of units sold:  ";
+            cin>>sales;
+        }while(sales<=0);
+        cout<<fixed<<setprecision(2);
+        if(sales<10)
+            cout<<"Total Price at (0%) discount:  $%"<<static_cast<float>(sales)*99.0;
+        else if(sales<=19)
+            cout<<"Total Price at (20%) discount:  $"<<static_cast<float>(sales)*99.0*0.2;
+        else if(sales<=49)
+            cout<<"Total Price at (30%) discount:  $"<<static_cast<float>(sales)*99.0*0.3;
+        else if(sales<=99)
+            cout<<"Total Price at (40%) discount:  $"<<static_cast<float>(sales)*99.0*0.4;
+        else
+            cout<<"Total Price at (50%) discount:  $"<<static_cast<float>(sales)*99.0*0.5;
     }while(repeat(1)); 
 }
 void program4(){
