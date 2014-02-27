@@ -25,6 +25,9 @@ void program5();
 void program6();
 void program7();
 
+//Program Function Prototypes
+float celsius(float);
+
 //Sub Function Prototypes
 int isNum(string);  //Returns 0 if invalid and program number if valid
 
@@ -211,9 +214,23 @@ void program5(){
     cout<<"\n************************************************"; 
     cout<<"\n**  Celsius Temperature Table   ****************";
     cout<<"\n************************************************";
-    cout<<"\n\n";
+    cout<<"\nThis program converts Celsius to Fahrenheit.\n";
+    
+    float f;
+    cout<<"\nExample Conversion Table:"<<endl
+        <<"|------------------------------|\n"
+        <<"|  Fahrenheit  |  Celsius      |\n"
+        <<"|--------------|---------------|\n";
+    for(int i=0;i<=20;i++){
+        cout<<"|  "<<left<<setw(10)<<i<<"  |  "<<setw(11)<<celsius(static_cast<float>(i))<<"  |\n";
+        }
+    cout<<"|------------------------------|\n";
+    
     do{
-        
+        cout<<endl<<"Enter a Fahrenheit temp to convert:  ";
+        cin>>f;
+        cin.ignore();
+        cout<<"Temperature in Celsius:  "<<celsius(f)<<endl;
     }while(repeat(1)); 
 }
 void program6(){
@@ -236,6 +253,9 @@ void program7(){
 }
 
 //Program Function Prototypes
+float celsius(float f){
+    return (f-32.0)*5/9;
+}
 
 //Upkeep Prototypes
 int isNum(string a){
