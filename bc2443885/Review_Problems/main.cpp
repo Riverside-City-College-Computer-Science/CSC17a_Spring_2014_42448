@@ -171,9 +171,40 @@ void program4(){
     cout<<"\n************************************************"; 
     cout<<"\n**  Population   *******************************";
     cout<<"\n************************************************";
-    cout<<"\n\n";
+    cout<<"\nThis program will predict population increases based on a few parameters.\n";
+    
+    int pop;
+    float percent;
+    int days;
+    
     do{
+        //Get Input
+        cout<<"\nPlease input the following:  \n";
+        do{
+            cout<<"Starting Population:  ";
+            cin>>pop;
+            cin.ignore();
+        }while(pop<2);
+        do{
+            cout<<"Percent growth per day:  ";
+            cin>>percent;
+            cin.ignore();
+        }while(percent<0);
+        do{
+            cout<<"Number of days:  ";
+            cin>>days;
+            cin.ignore();
+        }while(days<1);
         
+        //Output
+        cout<<"Estimated population by day:"<<endl
+            <<"---------------------------------"<<endl;
+        for(int i=0;i<=days;i++){
+            float temp = 0;
+            cout<<"Day "<<i<<":  "<<pop<<endl;
+            temp = static_cast<float>(pop)*(percent/100.0);
+            pop = static_cast<int>(temp);
+        }
     }while(repeat(1)); 
 }
 void program5(){
