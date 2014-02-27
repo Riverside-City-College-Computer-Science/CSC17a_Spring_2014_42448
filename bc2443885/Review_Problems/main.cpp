@@ -42,9 +42,9 @@ void menu(){
     string c;
     //Begin Menu
     do{
-        cout<<"************************************************************************"
+        cout<<"**********************************************************"
             <<"\nWelcome to Bradd's Assignment 1 - CSC17A - 42448"
-            <<"\n----------------------------------------------------------------------"
+            <<"\n----------------------------------------------------------"
             <<"\n[1]  Monthly Sales Tax    - Gaddis 3.12"
             <<"\n[2]  Property Tax         - Gaddis 3.13" 
             <<"\n[3]  Software Sales       - Gaddis 4.10"            
@@ -53,7 +53,7 @@ void menu(){
             <<"\n[6]  Number Analysis      - Gaddis 7.6"           
             <<"\n[7]  Binary String Search - Gaddis 8.7";
         do{
-            cout<<"\n-----------------------------------------------------------------------"
+            cout<<"\n----------------------------------------------------------"
                 <<"\nPlease Enter the number of the program you'd like to use:  ";
             getline(cin,c);
         }while(!isNum(c));
@@ -95,9 +95,29 @@ bool repeat(int c){
 void program1(){
     cout<<"\n************************************************"; 
     cout<<"\n**  Monthly Sales Tax **************************";
-    cout<<"\n************************************************";
-    cout<<"\n\n";
+    cout<<"\n************************************************"<<endl;
+    cout<<"This program calculates various taxes from sales and prints a report\n\n";
+    string month;
+    float cash;
+    
     do{
+        //Get Input
+        cout<<"Please input the following:  \n";
+        cout<<"Month:  ";
+        getline(cin,month);
+        cout<<"Total Cash from Register:  ";
+        cin>>cash;
+        cin.ignore();
+        
+        //Display Report
+        cout<<"Month:  "<<month<<endl
+            <<fixed<<setprecision(2)
+            <<"--------------------------------"<<endl
+            <<"Total Collected:       $"<<cash<<endl
+            <<"Sales:                 $"<<cash/1.06<<endl
+            <<"County Sales Tax (2%): $"<<cash*.02<<endl
+            <<"State Sales Tax (4%):  $"<<cash*.04<<endl
+            <<"Total Sales Tax:       $"<<cash-(cash/1.06)<<endl;
         
     }while(repeat(1)); 
 }
