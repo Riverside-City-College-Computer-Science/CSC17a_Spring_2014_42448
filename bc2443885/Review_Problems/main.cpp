@@ -1,7 +1,7 @@
 /* Bradd Carey
  * 26 Feb 2014
  * 
- * 1
+ * 
  */
 
 //Libraries
@@ -122,13 +122,25 @@ void program1(){
     }while(repeat(1)); 
 }
 void program2(){
-    int hours, mins, waitH, waitM, days;
     cout<<"\n************************************************"; 
     cout<<"\n**  Property Tax   *****************************";
     cout<<"\n************************************************";
-    cout<<"\n\n";
+    cout<<"\nThis program calculate property tax.\n";
+    
+    float cash;
     do{
+        //Get Input      
+        cout<<"Enter Property Worth:  ";
+        cin>>cash;
+        cin.ignore();
         
+        //Display Report
+        cout<<"Property Report:  "
+            <<fixed<<setprecision(2)
+            <<"--------------------------------"<<endl
+            <<"Total Worth:       $"<<cash<<endl
+            <<"Assessment Value:  $"<<cash*0.6<<endl
+            <<"Property Tax:      $"<<cash*0.6/100.0*0.64<<endl;
     }while(repeat(1)); 
 }
 void program3(){
