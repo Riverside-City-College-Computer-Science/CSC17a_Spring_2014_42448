@@ -5,10 +5,13 @@
  */
 
 //Libraries
+#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <iomanip>
 #include <cmath>
+#include <ctime>
+#include <string>
 
 using namespace std;
 
@@ -27,12 +30,18 @@ void program7();
 
 //Program Function Prototypes
 float celsius(float);
+void randArr(int,int*);       //Generate a random array
+void prntArr(int, int, int*); //Print that array
+int getHigh(int,int*);        //Returns the highest element in the array
+int getLow(int,int*);         //Returns the lowest element in the array
+int getTotal(int,int*);       //Returns the sum of elements in the array
+float mean(int*,int);         //Returns the mean
 
 //Sub Function Prototypes
 int isNum(string);  //Returns 0 if invalid and program number if valid
 
 int main(int argc, char** argv) {
-    
+    srand(time(0));
     menu();
     cout<<"\nThank you for using Assignment 5!\n\nGOODBYE!!";
     return 0;
@@ -237,16 +246,46 @@ void program6(){
     cout<<"\n************************************************"; 
     cout<<"\n**  Number Analysis Program   ******************";
     cout<<"\n************************************************";
-    cout<<"\n\n";
+    cout<<"\nThis program generates a random array, and displays information about it.\n";
+    
+    const int SIZE=10;
+    int* a = new int[SIZE];
+    
     do{
+        //Generate Random Array of (0-9)
+        randArr(SIZE,a);
+        //Print the array
+        prntArr(SIZE,5,a);
+        cout<<endl;
+        //Find highest
+        cout<<"Largest:  "<<getHigh(SIZE,a)<<endl;
+        //Find highest
+        cout<<"Smallest:  "<<getLow(SIZE,a)<<endl;
+        //Find highest
+        cout<<"Total:  "<<getTotal(SIZE,a)<<endl;
+        //Find highest
+        cout<<"Average:  "<<mean(a,SIZE)<<endl;
         
-    }while(repeat(1)); 
+    }while(repeat(1));
+    //Memory Clean
+    delete a;
 }
 void program7(){
     cout<<"\n************************************************"; 
     cout<<"\n**  Binary String Search   *********************";
     cout<<"\n************************************************";
     cout<<"\n\n";
+    
+    const int NUM_NAMES = 20;
+    string names[NUM_NAMES] = {"Collins, Bill", "Smith, Bart", "Allen, Jim",
+                               "Griffin, Jim", "Stamey, Marty", "Rose, Geri",
+                               "Taylor, Terri", "Johnson, Jill",
+                               "Allison, Jeff", "Looney, Joe", "Wolfe, Bill",
+                               "James, Jean", "Weaver, Jim", "Pore, Bob",
+                               "Rutherford, Greg", "Javens, Renee",
+                               "Harrison, Rose", "Setzer, Cathy",
+                               "Pike, Gordon", "Holland, Beth" };
+    
     do{
         
     }while(repeat(1)); 
@@ -255,6 +294,46 @@ void program7(){
 //Program Function Prototypes
 float celsius(float f){
     return (f-32.0)*5/9;
+}
+void randArr(int s,int* a){
+    for(int i=0;i<s;i++){
+        a[i]=rand()%10;
+    }
+}
+void prntArr(int s, int l, int* a){
+    for(int i=0;i<s;i++){
+        cout<<a[i]<<" ";
+        if(!((i+1)%l)){
+            cout<<endl;
+        }
+    }
+}
+float mean(int* a,int s){
+    float temp=0;
+    for(int i=0;i<s;i++){
+        temp += a[i];
+    }
+    return temp/s;
+}
+int getHigh(int s,int* a){
+    int foo=0;
+    for(int i=0;i<s;i++)
+        if(foo<a[i])
+            foo=a[i];
+    return foo;
+}
+int getLow(int s,int *a){
+    int foo=10;
+    for(int i=0;i<s;i++)
+        if(foo>a[i])
+            foo=a[i];
+    return foo;
+}
+int getTotal(int s,int *a){
+    int foo=0;
+    for(int i=0;i<s;i++)
+        foo+=a[i];
+    return foo;
 }
 
 //Upkeep Prototypes
