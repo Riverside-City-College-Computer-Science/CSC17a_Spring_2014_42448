@@ -5,10 +5,15 @@
  */
 
 //Libraries
+#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <iomanip>
 #include <cmath>
+#include <ctime>
+#include <string.h>
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -27,14 +32,23 @@ void program7();
 
 //Program Function Prototypes
 float celsius(float);
+void randArr(int,int*);       //Generate a random array
+void prntArr(int, int, int*); //Print that array
+int getHigh(int,int*);        //Returns the highest element in the array
+int getLow(int,int*);         //Returns the lowest element in the array
+int getTotal(int,int*);       //Returns the sum of elements in the array
+float mean(int*,int);         //Returns the mean
+void strSort(string[],int);   //Sorts string arrays
+void prntArr(int, string*);   //Prints string array
+void prntVec(vector<string>);
 
 //Sub Function Prototypes
 int isNum(string);  //Returns 0 if invalid and program number if valid
 
 int main(int argc, char** argv) {
-    
+    srand(time(0));
     menu();
-    cout<<"\nThank you for using Assignment 5!\n\nGOODBYE!!";
+    cout<<"\nThank you for using Assignment 5!\n\nGOODBYE!!";    
     return 0;
 }
   
@@ -74,13 +88,16 @@ void menu(){
 }
 bool repeat(int c){
     string r;
-    if(c){
+    if(c==1){
         cout<<"\nEnter [0] to exit to Main Menu, else repeat.  ";
         getline(cin,r);
         if(r[0]!='0')
             return true;
         else
             return false;
+    }
+    else if(c==2){
+        getline(cin,r);
     }
     else{
         cout<<"\nEnter [0] to exit Program, else repeat.  ";
@@ -237,17 +254,84 @@ void program6(){
     cout<<"\n************************************************"; 
     cout<<"\n**  Number Analysis Program   ******************";
     cout<<"\n************************************************";
-    cout<<"\n\n";
+    cout<<"\nThis program generates a random array, and displays information about it.\n";
+    
+    const int SIZE=10;
+    int* a = new int[SIZE];
+    
     do{
+        //Generate Random Array of (0-9)
+        randArr(SIZE,a);
+        //Print the array
+        prntArr(SIZE,5,a);
+        cout<<endl;
+        //Find highest
+        cout<<"Largest:  "<<getHigh(SIZE,a)<<endl;
+        //Find highest
+        cout<<"Smallest:  "<<getLow(SIZE,a)<<endl;
+        //Find highest
+        cout<<"Total:  "<<getTotal(SIZE,a)<<endl;
+        //Find highest
+        cout<<"Average:  "<<mean(a,SIZE)<<endl;
         
-    }while(repeat(1)); 
+    }while(repeat(1));
+    //Memory Clean
+    delete a;
 }
 void program7(){
     cout<<"\n************************************************"; 
     cout<<"\n**  Binary String Search   *********************";
     cout<<"\n************************************************";
-    cout<<"\n\n";
+    cout<<"\nThis program will predict your team captain choice in a number of guesses.\n";
+    
+    const int NUM_NAMES = 20;
+    string names[NUM_NAMES] = {"Collins, Bill", "Smith, Bart", "Allen, Jim",
+                               "Griffin, Jim", "Stamey, Marty", "Rose, Geri",
+                               "Taylor, Terri", "Johnson, Jill",
+                               "Allison, Jeff", "Looney, Joe", "Wolfe, Bill",
+                               "James, Jean", "Weaver, Jim", "Pore, Bob",
+                               "Rutherford, Greg", "Javens, Renee",
+                               "Harrison, Rose", "Setzer, Cathy",
+                               "Pike, Gordon", "Holland, Beth" };
+    
     do{
+        //Set up
+        vector<string> vnames(names, names + 20);
+        cout<<endl<<"Please choose your team captain from the list below:  "<<endl;
+        prntVec(vnames);
+        sort(vnames.begin(),vnames.end());
+        
+        cout<<endl<<"Once you've chosen a team captain press enter to continue..."<<endl;
+        repeat(2);
+        
+        //Explanation
+        cout<<endl<<"I will guess which person you've chosen from the list, then you"
+            <<endl<<"tell me if their name is alphabetically higher or lower than "
+            <<endl<<"your chosen captain.\n";
+        
+        //Start Process
+        int c=0;
+        int place;
+        for(int i=0;i<6;i++){
+            //Guess
+            place=vnames.size()/2;
+            cout<<endl<<"Is your captain \""<<vnames[place]<<"\"?  "<<endl;
+            //Get input
+            do{
+                cout<<"Enter [0] for yes, [1] for lower, [2] for higher.  ";
+                cin>>c;
+                cin.ignore();
+            }while(c!=0&&c!=1&&c!=2);
+            if(c==1)
+                vnames.erase(vnames.begin()+place,vnames.end());
+            else if(c==2)
+                vnames.erase(vnames.begin(),vnames.begin()+place);
+            else if(!c){
+                cout<<endl<<"Hooray I Guessed Right!";
+                i=6;
+            }
+            cout<<endl;
+        }
         
     }while(repeat(1)); 
 }
@@ -255,6 +339,57 @@ void program7(){
 //Program Function Prototypes
 float celsius(float f){
     return (f-32.0)*5/9;
+}
+void randArr(int s,int* a){
+    for(int i=0;i<s;i++){
+        a[i]=rand()%10;
+    }
+}
+void prntArr(int s, int l, int* a){
+    for(int i=0;i<s;i++){
+        cout<<a[i]<<" ";
+        if(!((i+1)%l)){
+            cout<<endl;
+        }
+    }
+}
+void prntArr(int s, string* a){
+    for(int i=0;i<s;i++)
+        cout<<a[i]<<endl;
+}
+float mean(int* a,int s){
+    float temp=0;
+    for(int i=0;i<s;i++){
+        temp += a[i];
+    }
+    return temp/s;
+}
+int getHigh(int s,int* a){
+    int foo=0;
+    for(int i=0;i<s;i++)
+        if(foo<a[i])
+            foo=a[i];
+    return foo;
+}
+int getLow(int s,int *a){
+    int foo=10;
+    for(int i=0;i<s;i++)
+        if(foo>a[i])
+            foo=a[i];
+    return foo;
+}
+int getTotal(int s,int *a){
+    int foo=0;
+    for(int i=0;i<s;i++)
+        foo+=a[i];
+    return foo;
+}
+void prntVec(vector<string> a){
+    for(int i=0; i<a.size(); i++) {
+        cout<<left<<setw(18)<<a[i];
+        if(!((i+1)%4))
+            cout<<endl;
+    }
 }
 
 //Upkeep Prototypes
