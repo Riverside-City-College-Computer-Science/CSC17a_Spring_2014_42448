@@ -1,0 +1,2 @@
+5 and 9 digit zip code regular expression.
+/^\s*\d{5}([\-]\d{4})?\s*$/

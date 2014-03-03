@@ -1,0 +1,23 @@
+Mode = a set derived from another set which contains elements with a freq <= 2 and where freq is a max number
+
+mode { 0,1,2 } = { null }
+mode { 0,1,2,1 } = { 1 }
+mode { 0,2,3,0,3 } = { 0 , 3 }
+mode { 0,1,2,0,1,3 } = { 0, 3 }
+
+1) steps sort the set
+	{ 0, 0, 2, 3, 3 }
+	   -2- -1- --2--
+2) compare elements in set, with next element + count to fin max freq
+
+3) another count to determine how many have max freq  #modes
+
+4) create an array and fill with those that have max frequency
+
+mode array = ma
+ma[0] -> max freq
+ma[1] -> # modes
+ma[2] -> mode[1]
+ma[3] -> mode[2]
+ma[n+1 -> m[n-1]
+
