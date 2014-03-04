@@ -21,66 +21,87 @@ void mrkSort(int [],int);
 void swap(int &,int &);
 bool findVal(int [],int,int);
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
     //Set the random seed
     srand(static_cast<unsigned int>(time(0)));
-    //Declare variables
+ 
+	//Declare variables
     const int SIZE=200;
     int array[SIZE],brray[SIZE];
-    //Fill the array
+    
+	//Fill the array
     filAray(array,SIZE);
-    //Copy the array
+    
+	//Copy the array
     cpy(array,brray,SIZE);
-    //Sort the copy
+    
+	//Sort the copy
     mrkSort(brray,SIZE);
-    //Print the arrays
+    
+	//Print the arrays
     prntAry(array,SIZE,10);
     prntAry(brray,SIZE,10);
-    //Pick a random number to find
+    
+	//Pick a random number to find
     int val=rand()%90+10;
     cout<<"The value to find in the array = "<<val<<endl;
-    if(findVal(array,SIZE,val))cout<<"This value is in the array"<<endl;
-    else cout<<"The value is not found in the array"<<endl;
-    //Exit stage right
+    
+	if(findVal(array,SIZE,val))
+		cout<<"This value is in the array"<<endl;
+    else 
+		cout<<"The value is not found in the array"<<endl;
+    
+	//Exit stage right
     return 0;
 }
 
-bool findVal(int a[],int n ,int val){
-    for(int i=0;i<n;i++){
+bool findVal(int a[],int n ,int val)
+{
+    for(int i=0;i<n;i++)
+	{
         if(a[i]==val)return true;
     }
     return false;
 }
 
-void swap(int &a,int &b){
+void swap(int &a,int &b)
+{
     int temp=a;
     a=b;
     b=temp;
 }
 
-void mrkSort(int a[],int n){
+void mrkSort(int a[],int n)
+{
     //Finds the minimum at this starting position
-    for(int i=0;i<n-1;i++){
+    for(int i=0;i<n-1;i++)
+	{
         //Swaps the larger values as you go down the list
-        for(int j=i+1;j<n;j++){
+        for(int j=i+1;j<n;j++)
+		{
             //Check for swap
             if(a[i]>a[j])swap(a[i],a[j]);
         }
     }
 }
 
-void cpy(const int a[],int b[],int n){
+void cpy(const int a[],int b[],int n)
+{
     //Copy a to b
     if(n<=1)n=2;
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;i++)
+	{
         b[i]=a[i];
     }
 }
 
-void prntAry(const int a[],int n,int perLine){
+void prntAry(const int a[],int n,int perLine)
+{
     //Output the array
     cout<<endl;
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;i++)
+	{
         cout<<a[i]<<" ";
         if(i%10==(perLine-1))cout<<endl;
     }
@@ -88,10 +109,12 @@ void prntAry(const int a[],int n,int perLine){
 }
 
 //Fill array with 2 digit random digits
-void filAray(int a[],int n){
+void filAray(int a[],int n)
+{
     //Check the size of the array
     if(n<=1)n=2;
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;i++)
+	{
         a[i]=rand()%90+10;
     }
 }
