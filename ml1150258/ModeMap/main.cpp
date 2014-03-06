@@ -14,28 +14,28 @@ using namespace std;
 //Function Prototypes
 void fillAry(int [],int);
 void prntAry(int [],int,int);
-int maxFreq(int [],int);
-int nuModes(int [],int,int);
+int maxFreq(int [],int,map<int,int>&);
+int nuModes(map<int,int>&);
 
 int main(int argc, char** argv) {
     //Declare some variables
     const int SIZE=105;
     int array[SIZE];
+    map<int,int> freq;
     //Fill the array with 0-9
     fillAry(array,SIZE);
     //Print the array
     prntAry(array,SIZE,10);
     //What is the max frequency
-    cout<<"The max freq in the array = "<<maxFreq(array,SIZE)<<endl;
+    cout<<"The max freq in the array = "<<maxFreq(array,SIZE,freq)<<endl;
     //Exit stage right!
     return 0;
 }
 
 //No Sorting Required
 //Which means no array copy as well
-int maxFreq(int a[],int n){
-    //Declare a map and max
-    map<int, int> m;
+int maxFreq(int a[],int n,map<int,int>&m){
+    //Declare max
     int max=0;
     //Loop and compare
     for(int i=0;i<n;i++){
