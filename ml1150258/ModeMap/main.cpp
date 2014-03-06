@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-//No Sorting Require
+//No Sorting Required
 //Which means no array copy as well
 int maxFreq(int a[],int n){
     //Declare a map and max
