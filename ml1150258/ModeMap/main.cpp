@@ -15,7 +15,7 @@ using namespace std;
 void fillAry(int [], int);
 void prntAry(int [], int, int);
 int maxFreq(int [], int, map<int,int> &);
-int nuModes(int, map<int,int> &);
+int nmModes(int, map<int,int> &);
 
 int main(int argc, char** argv) {
     //Declare some variables
