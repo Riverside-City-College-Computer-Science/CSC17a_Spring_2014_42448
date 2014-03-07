@@ -46,12 +46,12 @@ int main(){
         case 5:    prob5();break;
         case 6:    prob6();break;
         default:   dflt(choice);}
-    }while(choice>=0&&choice<=7);
+    }while(choice>=1&&choice<=6);
     return 0;
 }
 
 void Menu(){
-    cout<<"Menu for Assignment 5"<<endl;
+    cout<<"Review Assignment"<<endl;
     cout<<"Type 0 for Gaddis 7th Edition Chapter 3 problem 12"<<endl;
     cout<<"Type 1 for Gaddis 7th Edition Chapter 3 problem 13"<<endl;
     cout<<"Type 2 for Gaddis 7th Edition Chapter 4 problem 10"<<endl;
@@ -71,7 +71,19 @@ short getChoice(){
 //Begin Gaddis 7th Edition Chapter 3 Problem 12
 void prob0(){
      //Declare Variables
+     float val, aval, tax=6.4e-1f, ptax;
      
+     //get property value from user
+     cout<<"What is the value of the property?"<<endl;
+     cin>>val;
+     
+     //Calculate property tax
+     aval=val*6.0e-1f;
+     ptax=(aval/100)*tax;
+     
+     cout<<setprecision(2)<<fixed;
+     cout<<"The assessment value of the property is $"<<aval<<"."<<endl;
+     cout<<"The property tax for this property is $"<<ptax<<"."<<endl<<endl;
 
 }//End Gaddis Chap3 Prob12
 
