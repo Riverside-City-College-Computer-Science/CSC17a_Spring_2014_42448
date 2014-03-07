@@ -46,7 +46,7 @@ int main(){
         case 5:    prob5();break;
         case 6:    prob6();break;
         default:   dflt(choice);}
-    }while(choice>=1&&choice<=6);
+    }while(choice>=0&&choice<=6);
     return 0;
 }
 
@@ -71,6 +71,33 @@ short getChoice(){
 //Begin Gaddis 7th Edition Chapter 3 Problem 12
 void prob0(){
      //Declare Variables
+     string month;
+     float ttl;
+     
+     cout<<"Calculating sales tax!"<<endl<<endl;
+     
+     cout<<"Enter Month: ";
+     cin>>month;
+     
+     cout<<"How much money was in the register? $";
+     cin>>ttl;
+     cout<<endl;
+
+     cout<<"Monthly Sales Report"<<endl
+         <<"Month: "<<month<<endl
+         <<fixed<<setprecision(2)
+         <<"Total cash in register: $"<<ttl<<endl
+         <<"Total Sales:            $"<<ttl/1.06<<endl
+         <<"County Sales Tax (2%):  $"<<(ttl/1.06)*.02<<endl
+         <<"State Sales Tax (4%):   $"<<(ttl/1.06)*.04<<endl
+         <<"Total Sales Tax:        $"<<ttl-(ttl/1.06)<<endl<<endl;
+
+}//End Gaddis Chap3 Prob12
+
+
+//Begin Gaddis 7th Edition Chapter 3 Problem 13
+void prob1(){
+     //Declare Variables
      float val, aval, tax=6.4e-1f, ptax;
      
      //get property value from user
@@ -84,12 +111,6 @@ void prob0(){
      cout<<setprecision(2)<<fixed;
      cout<<"The assessment value of the property is $"<<aval<<"."<<endl;
      cout<<"The property tax for this property is $"<<ptax<<"."<<endl<<endl;
-
-}//End Gaddis Chap3 Prob12
-
-
-//Begin Gaddis 7th Edition Chapter 3 Problem 13
-void prob1(){
      
 }//End Gaddis Chap3 Prob13
 
