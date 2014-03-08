@@ -1,7 +1,7 @@
 /* 
- * File:   main.cpp
  * Author: Miguel Gaona
- *
+ * Class: CIS 17a
+ * Section: 42448
  * Created on March 5, 2014, 9:47 AM
  */
 
@@ -9,6 +9,7 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
+#include <cmath>
 using namespace std;
 
 void Menu();
@@ -21,7 +22,22 @@ void problem4();
 void problem5();
 void problem6();
 void problem7();
-
+float celsius(float);
+struct MonthlyBudget
+{
+    float housing,
+          utilities,
+          expenses,
+          transport,
+          food,
+          medical,
+          insurance,
+          entertain,
+          clothes,
+          misc;
+};
+void printExpenses(MonthlyBudget, MonthlyBudget);
+void getExpenses(MonthlyBudget &);
 
     int main(int argv,char *argc[])
     {
@@ -186,17 +202,127 @@ void problem7();
     }
     void problem5()
     {
-           cout<<"In problem # 5"<<endl<<endl;
+        cout<<"In problem # 5"<<endl<<endl;
+        
+        float degF;
+        float degC;
+        
+	cout<<"Enter a temperature in Fahrenheit: ";
+	cin>>degF;
+        
+        degC = celsius(degF);
+        
+	cout<<"Converts to: "<<degC<<" degrees Celsius"<<endl<<endl;
     }
     void problem6()
     {
-           cout<<"In problem # 6"<<endl<<endl;
+          cout<<"In problem # 6"<<endl<<endl;
+           
+          MonthlyBudget first, second;
+           
+          first.housing = 500;
+          first.utilities = 150;
+          first.expenses = 65;
+          first.transport = 50;
+          first.food = 250;
+          first.medical = 30;
+          first.insurance = 100;
+          first.entertain = 150;
+          first.clothes = 75;
+          first.misc = 50;       
+          
+          getExpenses(second);
+          printExpenses(first, second);
+           
+          cout<<endl<<endl;
     }
     void problem7()
     {
-		cout<<"In problem # 7"<<endl<<endl;
+	cout<<"In problem # 7"<<endl<<endl;
+        
+                
     }
     void def(int choice)
     {
            cout<<"You typed "<<choice<<" to exit the program"<<endl;
+    }
+    float celsius(float f)
+    {
+        float c = (5/9)*(f-32);
+        return c;
+    }
+    void getExpenses(MonthlyBudget &second)
+    {
+        cout<<"Enter your expenses for the month."<<endl;
+        cout<<"Housing: ";
+        cin>>second.housing;
+        cout<<"Utilities: ";
+        cin>>second.utilities;
+        cout<<"Household Expenses: ";
+        cin>>second.expenses;
+        cout<<"Transportation: ";
+        cin>>second.transport;
+        cout<<"Food: ";
+        cin>>second.food;
+        cout<<"Medical: ";
+        cin>>second.medical;
+        cout<<"Insurance: ";
+        cin>>second.insurance;
+        cout<<"Entertainment: ";
+        cin>>second.entertain;
+        cout<<"Clothing: ";
+        cin>>second.clothes;
+        cout<<"Miscellaneous: ";
+        cin>>second.misc;
+    }
+    void printExpenses(MonthlyBudget first, MonthlyBudget second)
+    {
+        float atotal = first.housing+first.utilities+first.expenses+first.transport+first.food+first.medical+first.insurance+first.entertain+first.clothes+first.misc,
+              btotal = second.housing+second.utilities+second.expenses+second.transport+second.food+second.medical+second.insurance+second.entertain+second.clothes+second.misc,
+              debt;
+        
+           
+           cout<<fixed<<setprecision(2);
+           cout<<"Your budget for this month."<<endl;
+           cout<<"*************************"<<endl;
+           cout<<"Housing               "<<first.housing<<endl;
+           cout<<"Utilities             "<<first.utilities<<endl;
+           cout<<"Household Expenses    "<<first.expenses<<endl;
+           cout<<"Transportation        "<<first.transport<<endl;
+           cout<<"Food                  "<<first.food<<endl;
+           cout<<"Medical               "<<first.medical<<endl;
+           cout<<"Insurance             "<<first.insurance<<endl;
+           cout<<"Entertainment         "<<first.entertain<<endl;
+           cout<<"Clothing              "<<first.clothes<<endl;
+           cout<<"Miscellaneous         "<<first.misc<<endl<<endl;
+           cout<<"*************************"<<endl;
+           cout<<"TOTAL: $"<<atotal<<endl;
+           cout<<"*************************"<<endl<<endl;
+           
+           cout<<fixed<<setprecision(2);
+           cout<<"Your expenses this month."<<endl;
+           cout<<"*************************"<<endl;
+           cout<<"Housing               "<<second.housing<<endl;
+           cout<<"Utilities             "<<second.utilities<<endl;
+           cout<<"Household Expenses    "<<second.expenses<<endl;
+           cout<<"Transportation        "<<second.transport<<endl;
+           cout<<"Food                  "<<second.food<<endl;
+           cout<<"Medical               "<<second.medical<<endl;
+           cout<<"Insurance             "<<second.insurance<<endl;
+           cout<<"Entertainment         "<<second.entertain<<endl;
+           cout<<"Clothing              "<<second.clothes<<endl;
+           cout<<"Miscellaneous         "<<second.misc<<endl;
+           cout<<"*************************"<<endl;
+           cout<<"TOTAL: $"<<btotal<<endl;
+           cout<<"*************************"<<endl;
+           
+           debt = atotal - btotal;
+           if(debt<0)
+           {
+               cout<<"You are $"<<abs(debt)<<" over budget";
+           }
+           else if(debt>0)
+           {
+               cout<<"You are $"<<debt<<" under budget";
+           }
     }
