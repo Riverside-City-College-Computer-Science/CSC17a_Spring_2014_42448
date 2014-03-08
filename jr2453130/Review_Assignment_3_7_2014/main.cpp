@@ -28,7 +28,8 @@ void prob7();
 void prob8();
 void prob9();
 
-
+//Problem Function Prototypes
+float celsius(float);
 
 //Begin Execution Here!!!
 int main(){
@@ -117,30 +118,100 @@ void prob1(){
 
 //Begin Gaddis 7th Edition Chapter 4 Problem 10
 void prob2(){
+     //declare variables
+     int units=0;
+     float cost;
+     
+     //intro and get units sold from user
+     cout<<"This program calculates the cost based on packs purchased!"<<endl<<endl;
+     cout<<"How many units purchased? ";
+     
+     while(units<=0)
+         cin>>units;
+     
+     //calculate cost
+     if(units<10)
+         cost=units*99.0f;
+     else if(units<=19)
+         cost=units*99.0f*0.8;
+     else if(units<=49)
+         cost=units*99.0f*0.7;
+     else if(units<=99)
+         cost=units*99.0f*0.6;
+     else
+         cost=units*99.0f*0.5;
+         
+     //output cost to customer
+     cout<<fixed<<setprecision(2);
+     cout<<"The total cost of the purchase is: $"<<cost<<endl<<endl;
      
 }//End Gaddis Chap4 Prob10
 
 
 //Begin Gaddis 7th Edition Chapter 5 Problem 11
 void prob3(){
+     //declare variables
+     int orgs=0, days=0;
+     float inc=-1;
+     
+     //get organisms, pop increase and days from user
+     cout<<"Calculating a population of organisms and their growth!"<<endl<<endl;
+     cout<<"Enter number of starting organisms (>2): ";
+     while(orgs<2)
+         cin>>orgs;
+     cout<<"Enter daily percentage increase (>=0): ";
+     while(inc<0)
+         cin>>inc;
+     inc=inc/100.0;
+     cout<<"Enter number of days to multiply (>=1): ";
+     while(days<1)
+         cin>>days;
+         
+     //calculate growth
+     for (int i=0;i<days;i++){
+         cout<<fixed<<setprecision(2);
+         cout<<"Day "<<i+1<<": "<<orgs<<endl;
+         orgs=orgs+(orgs*inc);
+     }
      
 }//End Gaddis Chap5 Prob 11
 
 
 //Begin Gaddis 7th Edition Chapter 6 Problem 7
 void prob4(){
+     //declare variables
+     float f;
+     
+     cout<<"This program converts Celsius to Fahrenheit."<<endl<<endl;
+     cout<<"Farenheit    Celsius"<<endl;
+     cout<<fixed<<setprecision(2)<<endl;
+     //calculate
+     for(int i=0;i<21;i++){
+         f=celsius(i);
+         cout<<setw(5)<<i<<setw(15)<<f<<endl;
+     }
+     
      
 }//End Gaddis Chap6 Prob7
 
+float celsius(float f){
+    float c;
+    
+    c=(f-32.0)*5/9;
+    
+    return c;
+}
 
 //Begin Gaddis 7th Edition Chapter 7 Problem 6
 void prob5(){
+     
      
 }//End Gaddis Chap7 Prob6
 
 
 //Begin Gaddis 7th Edition Chapter 8 Problem 7
 void prob6(){
+     
      
 }//End Gaddis Chap8 Prob7
 
