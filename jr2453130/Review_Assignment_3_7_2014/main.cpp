@@ -8,6 +8,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
+#include <ctime>
 using namespace std;
 
 //Global Constants
@@ -33,6 +34,7 @@ float celsius(float);
 
 //Begin Execution Here!!!
 int main(){
+    srand(time(0));
     short choice;
     do{
         Menu();
@@ -204,7 +206,44 @@ float celsius(float f){
 
 //Begin Gaddis 7th Edition Chapter 7 Problem 6
 void prob5(){
+     cout<<"This program analyzes the contents of an array."<<endl<<endl;
+          
+     //declare variables
+     const int SIZE=10;
+     int array[SIZE];
+     int sum=0,low=10,high=0;
      
+     //fill array
+     for(int i=0;i<SIZE;i++)
+         array[i]=rand()%10;
+     
+     //display the array
+     for(int j=0;j<SIZE;j++)
+         cout<<array[j]<<" ";
+         
+     cout<<endl<<endl;
+     
+     //find highest
+     for(int k=0;k<SIZE;k++){
+         if(high<array[k])high=array[k];
+     }
+         
+     //find lowes
+     for(int l=0;l<SIZE;l++){
+         if(low>array[l])low=array[l];
+     }
+     
+     //find average
+     for(int m=0;m<SIZE;m++){
+         sum+=array[m];
+     }
+     
+     //output data
+     cout<<"The lowest number in the array: "<<low<<endl;
+     cout<<"The highest number in the array: "<<high<<endl;
+     cout<<"The sum of the numbers in the array: "<<sum<<endl;
+     cout<<"The average number in the array: "<<sum/SIZE<<endl;
+     cout<<endl<<endl;
      
 }//End Gaddis Chap7 Prob6
 
