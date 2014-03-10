@@ -1,0 +1,10 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=00401591
+eax=00000021 ebx=00000000 ecx=750BCCC9 edx=00000017 esi=014CEE5D edi=00000063
+ebp=0022AA68 esp=0022AA40 program=C:\Users\rcc\Desktop\CompareStaticDynamicAndVector\dist\Debug\Cygwin_4.x-Windows\comparestaticdynamicandvector.exe, pid 6140, thread main
+cs=001B ds=0023 es=0023 fs=003B gs=0000 ss=0023
+Stack trace:
+Frame     Function  Args
+0022AA68  00401591 (0022AC18, 00000064, 0000000A, 610FA47E)
+0022AC38  0040125C (00000001, 0022AC5C, 20010100, 61007F58)
+0022ACF8  61007FB5 (00000000, 0022CD84, 61007120, 00000000)
+End of stack trace
