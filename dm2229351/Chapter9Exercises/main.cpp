@@ -91,19 +91,17 @@ float mean(int array[],int size)
 
 void sort(int a[], int n)
 {
-    for (int j=0; j<n; j++)
     {
-        int temp = 0;
-        for (int i=0; i<n; i++)
+    //Finds the minimum at this starting position
+    for(int i=0;i<n-1;i++)
+    {
+        //Swaps the larger values as you go down the list
+        for(int j=i+1;j<n;j++)
         {
-                if (*(a+i) >  *(a+i+1))
-                {
-                    //swap
-                    temp = *(a+i);
-                    *(a+1) =  *(a+i+1);
-                    *(a+i+1) = temp;
-                }
+            //Check for swap
+            if(*(a+i)>*(a+j))swap(*(a+i),*(a+j));
         }
-
     }
+    }
+   
 }
