@@ -10,14 +10,18 @@
 #include <ctime>
 #include <iomanip>
 #include <cmath>
+#include <limits>
 
 using namespace std;
 
 int *fillArray( int size );
 int *fillNumericArr( int size );
 int *blankArray( int s );
-int * copy(const int *,int);
-int *mode( int *a, int size);
+int *copy(const int *,int);
+int* makeModeArray(int *a, int size );
+
+int maxFreq( int *a, int size );
+int numModes( int *a, int size );
 
 float mean ( int *a, int size );
 float median( int *a, int size );
@@ -27,24 +31,35 @@ void printArr( int *a, int s, int perLine );
 void bubbleSort( int*, int );
 void swap1( int&, int& );
 void destroy(int *);
-
+void meanMedianMode();
+void mode( int *a, int size);
 
 int main( int argc, char** argv ) {
    
     srand( time( NULL ) );
     
+    meanMedianMode();
+    return 0;
+}
+
+void meanMedianMode(){
     const int SIZE = 25;
-    
     int *array = fillNumericArr( SIZE );
     
-    printArr( array, SIZE, -1 );
+    printArr( array, SIZE, 10 );
+    int *sorted = copy( array, SIZE );
+    bubbleSort( sorted, SIZE );
         
     cout << "Mean: " << setprecision(2) << fixed << mean( array, SIZE ) << endl;
-    cout << "Median: " << setprecision(2) << fixed << median( array, SIZE ) << endl;
+    cout << "Median: " << setprecision(2) << fixed << median( sorted, SIZE ) << endl;
     cout << "Mode:\n";
-    printArr( mode( array, SIZE ), SIZE );
+    
+    
+    printArr( sorted, SIZE, 10 );
+    mode( sorted, SIZE );
+    //cout<<numModes(sorted, SIZE);        
+    
     destroy( array );
-    return 0;
 }
 
 
@@ -64,7 +79,7 @@ float median( int *a, int size ){
     int *medianArr = copy( a, size);
     
     //printArr( medianArr, size );
-    bubbleSort( medianArr, size );
+    //bubbleSort( medianArr, size );
     //printArr( medianArr, size );
     
     float result = 0;
@@ -82,20 +97,83 @@ float median( int *a, int size ){
     return result;
 }
 
-int *mode( int *a, int size){
-    int *modes = blankArray( size * 2);
+void mode( int *a, int size){
+    int *b = makeModeArray(a, size);
+    printArr(b, b[0]+2);
+    destroy(b);
+}
+
+int maxFreq( int *a, int size ){
+    int count = 1;
+    int max = 1;
     
-    for( int i = 0; i < size; i++ ){
-        //go through orig array
-        int val =  *(a+i);
-        //check if the mode array has a one of the values
-        for ( int j = 0; j < size; j+=2 ){
-            if ( *( modes + j) == val ){
-                //TODO finish this
+    for ( int i = 1; i < size; i++ ){
+        if ( *(a + i - 1) == *(a+i) ){
+            count++;
+            if ( count > max ){
+                max = count;
             }
         }
+        else{
+            count = 1;
+        }
     }
-    return modes;
+    return max;
+}
+
+int numModes( int *a, int size ){
+    int count = 0;
+    int lastMode = std::numeric_limits<int>::max();
+    int occurance = 1;
+    
+    for ( int i = 1; i < size; i++ ) {
+        if ( *(a + i - 1) == *(a + i ) ){
+            occurance++;
+            if ( occurance >= 2 ) {
+                if ( lastMode != *(a + i - 1) ) {
+                    count++;
+                    //cout<< *(a+i-1)<<", ";
+                    lastMode = *(a + i - 1);
+                }
+           }
+        }
+        else{
+            occurance = 1;
+        }
+    }
+    
+    return count;
+}
+
+int* makeModeArray(int *a, int size ){
+    int modes = numModes( a, size );
+    int occurance = 1;
+    int lastMode = std::numeric_limits<int>::max();
+    
+    int *result = blankArray(modes+2);
+    
+    *(result + 1) = maxFreq( a, size);
+    *(result) = modes;
+    
+    int stupid = 2;
+    for ( int i = 1; i < size; i++ ) {
+        if ( *(a + i - 1) == *(a + i) ){
+            occurance++;
+            if ( occurance >= 2 ) {
+                if ( lastMode != *(a + i - 1) ) {
+                    //cout<< *(a+i-1)<<", ";
+
+                    lastMode = *(a + i - 1);
+                    //fuck u 
+                    result[ stupid++ ] = a[i - 1];
+                }
+           }
+        }
+        else{
+            occurance = 1;
+        }
+    }
+    return result;
 }
 
 int *fillArray( int size ){
