@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=static_dynamic_vector_arrays
+PROJECTNAME=mean_median_mode
 
 # Active Configuration
 DEFAULTCONF=Debug
