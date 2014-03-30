@@ -5,7 +5,10 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>corporate.h</itemPath>
+      <itemPath>customer.h</itemPath>
       <itemPath>moviedata.h</itemPath>
+      <itemPath>soccer.h</itemPath>
+      <itemPath>weather.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -40,9 +43,15 @@
       </compileType>
       <item path="corporate.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="customer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="moviedata.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="soccer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="weather.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -67,9 +76,15 @@
       </compileType>
       <item path="corporate.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="customer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="moviedata.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="soccer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="weather.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

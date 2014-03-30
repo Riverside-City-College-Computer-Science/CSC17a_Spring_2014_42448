@@ -19,19 +19,17 @@
 //Objects
 #include "moviedata.h"
 #include "corporate.h"
-
+#include "weather.h"
+#include "soccer.h"
+#include "customer.h"
 
 using namespace std;
 
 //Global Constants
+const int MONTH = 12;
 
-//Structures
-struct MovieData{
-    string title;
-    string direct;
-    int year;
-    int runtime;
-};
+//Enumerators
+enum{ JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, LAST };
 
 //Main Function Prototypes
 void menu();
@@ -45,11 +43,17 @@ void program6();
 void program7();
 void program8();
 void program9();
+void program10();
+void program11();
+void program12();
+void program13();
 
 //Program Function Prototypes
 int isNum(string);
-
-//Not my Functions
+void addAcct(customer[],int);
+void editAcct(customer[],int);
+void prntAcct(customer[],int);
+void allAcct(customer[],int);
 
 //Main
 int main(int argc, char** argv) {
@@ -65,7 +69,7 @@ void menu(){
     //Begin Menu
     do{
         cout<<"**********************************************************"
-            <<"\nWelcome to Bradd's Assignment 1 - CSC17A - 42448"
+            <<"\nWelcome to Bradd's Assignment 2 - CSC17A - 42448"
             <<"\n----------------------------------------------------------"
             <<"\n[1]   String Length        - Gaddis 10.1"
             <<"\n[2]   Backward String      - Gaddis 10.2" 
@@ -73,15 +77,13 @@ void menu(){
             <<"\n[4]   Movie Data           - Gaddis 11.1"            
             <<"\n[5]   Movie Profit         - Gaddis 11.2"           
             <<"\n[6]   Corporate Sales Data - Gaddis 11.3"           
-            <<"\n[7]         - Gaddis 11.4"
-            <<"\n[8]        - Gaddis 11.5"
-            <<"\n[9]        - Gaddis 11.6"
-            <<"\n[10]        - Gaddis 11.6"
+            <<"\n[7]   Weather Statistics   - Gaddis 11.4"
+            <<"\n[8]   Weather Mod          - Gaddis 11.5"
+            <<"\n[9]   Soccer Scores        - Gaddis 11.6"
+            <<"\n[10]  Customer Accounts    - Gaddis 11.6"
             <<"\n[11]        - Gaddis 11.6"
             <<"\n[12]        - Gaddis 11.6"
-            <<"\n[13]        - Gaddis 11.6"
-            <<"\n[14]        - Gaddis 11.6"
-            <<"\n[15]        - Gaddis 11.6";
+            <<"\n[13]        - Gaddis 11.6";
         do{
             cout<<"\n----------------------------------------------------------"
                 <<"\nPlease Enter the number of the program you'd like to use:  ";
@@ -99,6 +101,13 @@ void menu(){
             case 7: program7()  ; break;
             case 8: program8()  ; break;
             case 9: program9()  ; break;
+            case 10:program10() ; break;
+            case 11:program11() ; break;
+            case 12:program12() ; break;
+            case 13:program13() ; break;
+            
+            
+
         }
         
     }while(repeat(0));
@@ -358,42 +367,230 @@ void program6(){
 }
 void program7(){
     cout<<"\n************************************************"; 
-    cout<<"\n**  Array Expander   ***************************";
+    cout<<"\n**  Weather Statistics  ************************";
     cout<<"\n************************************************";
-    cout<<"\nThis program takes an array and expands it for more input.\n";
-    int n=10;
+    cout<<"\nStore information relevant to weather by month\n";
+    
+    //Declare stuff
+    weather w[MONTH];
+    for(int i=0;i<MONTH;i++){
+        switch(i){
+            case 0: w[i].name="January"; break;
+            case 1: w[i].name="February"; break;
+            case 2: w[i].name="March"; break;
+            case 3: w[i].name="April"; break;
+            case 4: w[i].name="May"; break;
+            case 5: w[i].name="June"; break;
+            case 6: w[i].name="July"; break;
+            case 7: w[i].name="August"; break;
+            case 8: w[i].name="September"; break;
+            case 9: w[i].name="October"; break;
+            case 10: w[i].name="November"; break;
+            case 11: w[i].name="December"; break;
+        }
+    }
+    string highMon, lowMon;
+    int hTemp, lTemp, tRain;
+    float avgTemp, avgRain;
+    
     do{
+        //Reset
+        hTemp=-101;
+        lTemp=141;
+        tRain=0;
+        avgTemp=0;
+        avgRain=0;
+        
+        //Get information across all months
+        for(int i=0;i<MONTH;i++){
+            w[i].getInfo();
+            cout<<endl;
+        }
+        
+        //Output Statistics
+        cout<<endl<<endl<<"Yearly Statistics:  "<<endl;
+        //Calculate and display total rainfall
+        for(int i=0;i<MONTH;i++)
+            tRain+=w[i].tRain;
+        cout<<"Total Rainfall:  "<<tRain<<endl;
+        
+        //Calculate and display average rainfall
+        avgRain = static_cast<float>(tRain)/12.0;
+        cout<<"Average Rainfall:  "<<avgRain<<endl;
+        
+        //Calculate and display highest temp
+        for(int i=0;i<MONTH;i++)
+            if(w[i].hTemp>hTemp){
+                hTemp=w[i].hTemp;
+                highMon=w[i].name;
+            }
+        cout<<"Highest Temp:  "<<hTemp<<" ("<<highMon<<")"<<endl;
+        
+        //Calculate and display lowest temp
+        for(int i=0;i<MONTH;i++)
+            if(w[i].lTemp<lTemp){
+                lTemp=w[i].lTemp;
+                lowMon=w[i].name;
+            }
+        cout<<"Lowest Temp:  "<<lTemp<<" ("<<lowMon<<")"<<endl;
+        
+        //Calculate and display average temp
+        for(int i=0;i<MONTH;i++)
+            avgTemp+=static_cast<float>(w[i].aTemp);
+        avgTemp/=12.0;
+        cout<<"Average Temp:  "<<avgTemp<<endl;
         
     }while(repeat(1)); 
 }
 void program8(){
     cout<<"\n************************************************"; 
-    cout<<"\n**  Element Shifter   **************************";
+    cout<<"\n**  Weather Statistics Mod  ********************";
     cout<<"\n************************************************";
-    cout<<"\n\n";
-    int n=10;
+    cout<<"\nStore information relevant to weather by month with enumerators\n";
+    
+    //Declare stuff
+    weather w[MONTH];
+    for(int i=JAN;i!=LAST;i++){
+        switch(i){
+            case 0: w[i].name="January"; break;
+            case 1: w[i].name="February"; break;
+            case 2: w[i].name="March"; break;
+            case 3: w[i].name="April"; break;
+            case 4: w[i].name="May"; break;
+            case 5: w[i].name="June"; break;
+            case 6: w[i].name="July"; break;
+            case 7: w[i].name="August"; break;
+            case 8: w[i].name="September"; break;
+            case 9: w[i].name="October"; break;
+            case 10: w[i].name="November"; break;
+            case 11: w[i].name="December"; break;
+        }
+    }
+    string highMon, lowMon;
+    int hTemp, lTemp, tRain;
+    float avgTemp, avgRain;
+    
     do{
+        //Reset
+        hTemp=-101;
+        lTemp=141;
+        tRain=0;
+        avgTemp=0;
+        avgRain=0;
         
+        //Get information across all months
+        for(int i=JAN;i!=LAST;i++){
+            w[i].getInfo();
+            cout<<endl;
+        }
+        
+        //Output Statistics
+        cout<<endl<<endl<<"Yearly Statistics:  "<<endl;
+        //Calculate and display total rainfall
+        for(int i=JAN;i!=LAST;i++)
+            tRain+=w[i].tRain;
+        cout<<"Total Rainfall:  "<<tRain<<endl;
+        
+        //Calculate and display average rainfall
+        avgRain = static_cast<float>(tRain)/12.0;
+        cout<<"Average Rainfall:  "<<avgRain<<endl;
+        
+        //Calculate and display highest temp
+        for(int i=JAN;i!=LAST;i++)
+            if(w[i].hTemp>hTemp){
+                hTemp=w[i].hTemp;
+                highMon=w[i].name;
+            }
+        cout<<"Highest Temp:  "<<hTemp<<" ("<<highMon<<")"<<endl;
+        
+        //Calculate and display lowest temp
+        for(int i=JAN;i!=LAST;i++)
+            if(w[i].lTemp<lTemp){
+                lTemp=w[i].lTemp;
+                lowMon=w[i].name;
+            }
+        cout<<"Lowest Temp:  "<<lTemp<<" ("<<lowMon<<")"<<endl;
+        
+        //Calculate and display average temp
+        for(int i=JAN;i!=LAST;i++)
+            avgTemp+=static_cast<float>(w[i].aTemp);
+        avgTemp/=12.0;
+        cout<<"Average Temp:  "<<avgTemp<<endl;
+            
     }while(repeat(1)); 
 }
 void program9(){
     cout<<"\n************************************************"; 
-    cout<<"\n**  Pointer Rewrite   **************************";
+    cout<<"\n**  Soccer Scores  *****************************";
     cout<<"\n************************************************";
-    cout<<"\nThis program rewrites a function with reference variables to pointers\n";
-    int x = 10, y =5;
-    int& a = x;
-    int& b = y;
+    cout<<"\nStore and display info about a soccer team\n";
+    
+    //Declare
+    player p[12];
+    
     do{
-        
+        //Get data
+        for(int i=0;i<12;i++){
+            cout<<"Player "<<i+1<<":  "<<endl;
+            p[i].getInfo();
+            cout<<"--------------------"<<endl;
+        }
+        //Output Data
+        cout<<"| Name     | Number   | Score    |";
+        for(int i=0;i<12;i++)
+            p[i].printInfo();
     }while(repeat(1)); 
 }
-void program10();
-void program11();
-void program12();
-void program13();
-void program14();
-void program15();
+void program10(){
+    cout<<"\n************************************************"; 
+    cout<<"\n**  Customer Accounts  *************************";
+    cout<<"\n************************************************";
+    cout<<"\nStore and display info about customer accounts\n";
+    
+    //Declare
+    const int ACCT = 20;
+    customer c[ACCT];
+    for(int i=0;i<ACCT;i++)
+        c[i].zip = 0;
+    string ch;
+    int choice;
+    
+    //Menu
+    do{
+        cout<<"**********************************************************"
+            <<"\nCustomer Accounts Main Menu"
+            <<"\n----------------------------------------------------------"
+            <<"\n[1]  Add Account Info"
+            <<"\n[2]  Edit Account Info" 
+            <<"\n[3]  Retrieve Customer info by name"            
+            <<"\n[4]  Print all Customer data"            
+            <<"\n[0]  Exit Program";
+        do{
+            cout<<"\n----------------------------------------------------------"
+                <<"\nPlease enter choice:  ";
+            getline(cin,ch);
+        }while(isNum(ch)<0||isNum(ch)>4);
+        choice = isNum(ch);
+        
+        switch(choice){
+            case 0: break;
+            case 1: addAcct(c,ACCT)  ; break;    
+            case 2: editAcct(c,ACCT)  ; break;
+            case 3: prntAcct(c,ACCT)  ; break;
+            case 4: allAcct(c,ACCT)  ; break;
+            
+        }
+    }while(choice);
+}
+void program11(){
+    
+}
+void program12(){
+    
+}
+void program13(){
+    
+}
 
 //Program Function Prototypes
 int isNum(string a){
@@ -411,4 +608,50 @@ int isNum(string a){
     for(int i=a.length()-1;i>=0;i--)
         n+=((b[i]-'0')*pow(10,i));
     return n;
+}
+void addAcct(customer c[],int s){
+    int n;
+  //Find an empty record
+    for(int i=0;i<s;i++)
+        if(!c[i].zip)
+            n=i;
+  //Fill with data
+    c[n].setInfo();
+    cout<<"Data for "<<c[n].name<<" successfully added!"<<endl;
+}
+void editAcct(customer c[],int s){
+    string search;
+    int n=-1;
+    
+    cout<<"Enter a name to search for:  ";
+    getline(cin,search);
+    for(int i=0;i<s;i++)
+        if(strcmp(search.c_str(),c[i].name.c_str())==0)
+            n=i;
+    if(n==-1)
+        cout<<"No account records for:  "<<search<<endl;
+    else{
+        cout<<endl;
+        c[n].setInfo();
+    }       
+}
+void prntAcct(customer c[],int s){
+    string search;
+    int n=-1;
+    
+    cout<<"Enter a name to search for:  ";
+    getline(cin,search);
+    for(int i=0;i<s;i++)
+        if(strcmp(search.c_str(),c[i].name.c_str())==0)
+            n=i;
+    if(n==-1)
+        cout<<"No account records for:  "<<search<<endl;
+    else{
+        cout<<endl<<c[n].printInfo();
+    }
+}
+void allAcct(customer c[],int s){
+    for(int i=0;i<s;i++)
+        if(c[i].zip)
+            cout<<"---------------------------------"<<endl<<c[i].printInfo();
 }
