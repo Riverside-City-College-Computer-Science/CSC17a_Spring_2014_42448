@@ -1,5 +1,5 @@
 /* Bradd Carey
- * 29 Mar 2014
+ * Last Edit: 30 Mar 2014
  * 
  * Assignment 2
  */
@@ -12,9 +12,8 @@
 #include <cmath>
 #include <ctime>
 #include <cstring>
-#include <algorithm>
-#include <vector>
 #include <sstream>
+#include <fstream>
 
 //Objects
 #include "moviedata.h"
@@ -54,6 +53,7 @@ void addAcct(customer[],int);
 void editAcct(customer[],int);
 void prntAcct(customer[],int);
 void allAcct(customer[],int);
+string listFiles();
 
 //Main
 int main(int argc, char** argv) {
@@ -71,9 +71,11 @@ void menu(){
         cout<<"**********************************************************"
             <<"\nWelcome to Bradd's Assignment 2 - CSC17A - 42448"
             <<"\n----------------------------------------------------------"
+            <<"\n--  Chapter 10 - Strings ---------------------------------"
             <<"\n[1]   String Length        - Gaddis 10.1"
             <<"\n[2]   Backward String      - Gaddis 10.2" 
             <<"\n[3]   Word Counter         - Gaddis 10.3"            
+            <<"\n--  Chapter 11 - Structures ------------------------------"    
             <<"\n[4]   Movie Data           - Gaddis 11.1"            
             <<"\n[5]   Movie Profit         - Gaddis 11.2"           
             <<"\n[6]   Corporate Sales Data - Gaddis 11.3"           
@@ -81,9 +83,10 @@ void menu(){
             <<"\n[8]   Weather Mod          - Gaddis 11.5"
             <<"\n[9]   Soccer Scores        - Gaddis 11.6"
             <<"\n[10]  Customer Accounts    - Gaddis 11.6"
-            <<"\n[11]        - Gaddis 11.6"
-            <<"\n[12]        - Gaddis 11.6"
-            <<"\n[13]        - Gaddis 11.6";
+            <<"\n--  Chapter 12 - File Streams ----------------------------"
+            <<"\n[11]  File Head Program    - Gaddis 12.1"
+            <<"\n[12]  File Display Program - Gaddis 12.2"
+            <<"\n[13]  Punch Line           - Gaddis 12.3";
         do{
             cout<<"\n----------------------------------------------------------"
                 <<"\nPlease Enter the number of the program you'd like to use:  ";
@@ -583,13 +586,96 @@ void program10(){
     }while(choice);
 }
 void program11(){
-    
+    cout<<"\n************************************************"; 
+    cout<<"\n**  File Head Program  *************************";
+    cout<<"\n************************************************";
+    cout<<"\nDisplays the first ten lines of a file or all of the file if shorter than 10 lines\n";
+    string s, stuff;
+    fstream myfile;
+    do{
+      //Chose and open file
+        s = listFiles();
+        myfile.open(s.c_str(),fstream::in);
+      //If open print contents up to 10 lines
+        if(myfile.is_open()){
+            for(int i=0;i<10;i++){
+                getline(myfile,stuff);
+                cout<<stuff<<endl;  
+                if(myfile.eof())
+                    i=10;
+            }
+        }
+        if(!(myfile.eof())){
+            cout<<"--------------------------------------\n"
+                <<"There is more to this file as well... \n"
+                <<"--------------------------------------\n";
+        }
+      //Close file
+        myfile.close();
+    }while(repeat(1)); 
 }
 void program12(){
-    
+    cout<<"\n************************************************"; 
+    cout<<"\n**  File Display Program  **********************";
+    cout<<"\n************************************************";
+    cout<<"\nDisplays the contents of an entire file\n";
+    string s, stuff;
+    fstream myfile;
+    int counter;
+    do{
+        counter=0;
+        cout<<"***Be careful with guide.txt it is a semi large file***"<<endl;
+      //Chose and open file
+        s = listFiles();
+        myfile.open(s.c_str(),fstream::in);
+      //If open print contents up to 10 lines
+        if(myfile.is_open()){
+            while(!myfile.eof()){
+                getline(myfile,stuff);
+                cout<<stuff<<endl;
+                counter++;
+                if(!(counter%24)){
+                    cout<<"Press Enter to continue..."<<endl;
+                    cin.ignore();
+                }
+            }
+        }
+        if(!(myfile.eof())){
+            cout<<"--------------------------------------\n"
+                <<"There is more to this file as well... \n"
+                <<"--------------------------------------\n";
+        }
+      //Close file
+        myfile.close();
+    }while(repeat(1)); 
 }
 void program13(){
-    
+    cout<<"\n************************************************"; 
+    cout<<"\n**  Punch Line  ********************************";
+    cout<<"\n************************************************";
+    cout<<"\nTells a bad joke.\n";
+    string stuff;
+    fstream joke;
+    fstream punch;
+    do{
+      //Chose and open file
+        joke.open("joke.txt",fstream::in);
+        punch.open("punchline.txt",fstream::in);
+      //If open prints a joke
+        if(joke.is_open()&&punch.is_open()){
+            punch.seekg(-29L,fstream::end);
+            getline(joke,stuff);
+            cout<<stuff<<endl;
+            cout<<"Press Enter to see answer."<<endl;
+            cin.ignore();
+            getline(punch,stuff);
+            cout<<stuff<<endl;
+            cin.ignore();
+        }
+      //Close file
+        joke.close();
+        punch.close();
+    }while(repeat(1)); 
 }
 
 //Program Function Prototypes
@@ -654,4 +740,30 @@ void allAcct(customer c[],int s){
     for(int i=0;i<s;i++)
         if(c[i].zip)
             cout<<"---------------------------------"<<endl<<c[i].printInfo();
+}
+string listFiles(){
+    int ch;
+    do{
+        cout<<"--------------------"<<endl
+            <<"   List of Files    "<<endl
+            <<"--------------------"<<endl
+            <<"   [1] oneline.txt  "<<endl
+            <<"   [2] rule.txt     "<<endl
+            <<"   [3] universe.txt "<<endl
+            <<"   [4] guide.txt    "<<endl
+            <<"--------------------"<<endl;
+    
+        cout<<"Choose from the list above which file to open:  ";
+        cin>>ch;
+        cin.ignore();
+    }while(ch<0||ch>4);
+    
+    switch(ch){
+        case 1: return "oneline.txt"; break;
+        case 2: return "rule.txt"; break;
+        case 3: return "universe.txt"; break;
+        case 4: return "guide.txt"; break;
+    }
+    
+    return "file not found";
 }
