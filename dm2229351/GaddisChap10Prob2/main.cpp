@@ -23,10 +23,10 @@ int main(int argc, char**argv) {
     return 0;
 }
 
-void count(char *a)
+void count(char *b)
 {
-    char *front = a;
-    char *back = a + strlen(a)-1;
+    char *front = b;
+    char *back = b + strlen(b)-1;
     while(front<back)
     {
         char tmp = *front;

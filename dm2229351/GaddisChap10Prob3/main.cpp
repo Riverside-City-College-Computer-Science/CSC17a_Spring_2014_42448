@@ -16,7 +16,7 @@ int main(int argc, char**argv) {
 
     const int SIZE=51;
     char input[SIZE];
-    cout << "Please enter a string to return a count of characters\n";
+    cout << "Please enter a string to return a count of words\n";
     cin.getline(input, SIZE);
     cout << count(input) << " is the number of words in the sentence\n";
     return 0;
