@@ -11,7 +11,7 @@
 #include <cmath>
 using namespace std;
 
-struct movie{
+struct movie2{
         string title;
         string director;
         int release;
@@ -20,18 +20,18 @@ struct movie{
         int revenue;
 };
 
-void printmovie(movie);
+void printmovie2(movie2);
 int main(int argc, char** argv) {
 
     
-    movie movie1={"Diego Movie", "Diego", 1982, 200,50000,100000};
-    movie movie2={"Jerry Movie", "Jerry", 2000, 240,100000,50000};
-    printmovie(movie1);
-    printmovie(movie2);
+    movie2 movie1={"Diego Movie", "Diego", 1982, 200,50000,100000};
+    movie2 movie2={"Jerry Movie", "Jerry", 2000, 240,100000,50000};
+    printmovie2(movie1);
+    printmovie2(movie2);
     return 0;
 }
 
-void printmovie(movie mov)
+void printmovie2(movie2 mov)
 {
     int net=mov.revenue-mov.production;
     cout << "Title: " << mov.title << endl;
