@@ -13,11 +13,10 @@
 #include <fstream>
 using namespace std;
 
-//Global Variables and constants
+//Global Variables and constants.
 
-//Function prototypes
-char rndDgit();
-void prpCode(char[], int);
+//Function Prototypes
+#include "functions.h"
 
 //Execution begins here
 int main(int argc, char** argv) {
@@ -26,48 +25,44 @@ int main(int argc, char** argv) {
     srand(static_cast<unsigned int>(time(0)));
     
     //Declare Variables
-    int SIZE=4;
-    char code[SIZE];
+    int SIZE=4, ply=0, tries = 12;
+    char code[SIZE], index[SIZE], guess[SIZE], symb[SIZE];
+    bool win = true;
     
-    //get random code
-    for(int i=0;i<1000;i++){
-    prpCode(code, SIZE);
+    //generate random code
+    prpCode(code, index, SIZE);
     
-    //Display the code
-    for(int i=0;i<4;i++){
+    //initiate loop for Game
+    do{
+        //Prompt user for guess
+        usrGess(guess, SIZE);
+
+        //test user's guess
+        tstGess(guess, index, code, symb, SIZE);
+
+        //output results array
+        for(int i=0;i<SIZE;i++){
+            cout<<symb[i]<<" ";
+        }
+        cout<<endl;
+        ply++;
+        //set win bool variable
+        win = tstWin(symb);
+        
+    }while(ply<tries&&win==true);
+    
+    //output victory
+    if(win==false){
+        cout<<"Hooray! you won"<<endl;
+    }
+    else cout<<"You did not win"<<endl;
+    
+    //output code
+    for(int i=0;i<SIZE;i++){
         cout<<code[i];
     }
-    //remove codes with 3 or 4 identical digits
-    if(code[0]==code[1]&&code[1]==code[2]){
-        cout<<" <----Fail";
-    }
-    else if(code[1]==code[2]&&code[2]==code[3]){
-        cout<<" <----Fail";
-    }
-    else if(code[0]==code[1]&&code[1]==code[2]&&code[2]==code[3]){
-        cout<<" <----Fail";
-    }
-    cout<<endl;
-    }
+    cout<<" was the code"<<endl;
     
     //Exit Stage right
     return 0;
-}
-
-//Generate random code and test for fairness
-void prpCode(char code[], int n){
-    
-    //Generate 4 digit code, using only numbers 1 through 6
-    for(int i=0;i<n;i++){
-        code[i]=rndDgit();
-    }
-    //Put null terminator at the end
-    for(int i=n;i<=n+1;i++){
-        code[i]='\0';
-    }
-    
-}
-
-char rndDgit(){
-    return rand()%6+49;
 }
