@@ -1,0 +1,144 @@
+Spring Midterm 2014 CSC17A
+
+Points for each quesiton
+menu  5
+1    15
+2    15
+3    15
+4    15
+5    15
+6    20
+
+Note: Submit the Midterm to my RCC email account mark.lehr@rcc.edu
+with the following subject:  LastName,FirstName - Midterm - 42448
+
+Submit the solutions/program in a zipped folder.  
+Do the best you can and turn in as much as you can.  
+
+Note:  I just want one program for the solution to all the problems 
+that follow. The program should prompt the user for which problem 
+solution to display. Use a do-while and switch construct somewhat
+like the following for the display of the menu and the selection of
+which problem to run
+
+	int inN;
+        do{
+         Menu();
+         inN=getN();
+         switch(inN){
+          case 1:    problem1();break;
+          case 2:    problem2();break;
+          case 3:    problem3();break;
+          case 4:    problem4();break;
+          case 5:    problem5();break;
+          case 6:    problem6();break;
+          case 7:    problem7();break;
+          default:   def(inN);}
+        }while(inN<8);
+
+Note:  I have provided a program that implements this format.
+All of your homework should use a similar structure.
+
+
+1)  Develop an application using structures for a customer
+that will determine if he/she has exceeded his/her checking 
+account balance. For each customer, the following 
+facts are available:
+
+a. Account number (Five digits only, i.e. test for this)
+b. Balance at the beginning of the month 
+c. Total of all checks written by this customer this month 
+     Loop until customer is through entering checks.
+d. Total of all deposits credited to this customer's account this 
+     month.  Loop until customer is through entering deposits.
+
+The program should input each of these facts from input dialogs as 
+integers, store in a structure, calculate the new balance, 
+display the new balance and debit the account $12 if overdrawn. 
+Also, if overdrawn, tell the customer the additional $12 fee 
+has been accessed and what the balance would be with this fee included.
+
+
+2)  Develop an application using an array of structures that will 
+determine the gross pay for any number of employees input. The company pays 
+"straight-time" for the first 20 hours worked, double time for 
+all hours worked in excess of 20 hours but less than 40 hours, 
+and triple time for any hours worked over 40 hours.
+
+The program should be able to loop and input the employee's name, 
+hours worked, and the rate of pay.  Once this has been done then 
+the gross pay should be calculated.  Output all the pertinent information
+with respect to the employee as a check and the process starts all over 
+again until you input an invalid rate of pay or hours worked.  This
+means a negative rate of pay or negative number of hours worked is
+not acceptable.
+
+
+3) Write a function using the following structure and prototype.
+
+struct statsResult
+{
+    float avg;
+    float median;
+    int *mode;   //array containing the modes
+    int nModes;  //number of modes in the array
+    int maxFreq; //max frequency of modes
+};
+
+statsResult *avgMedMode(int *,int); 
+
+The function takes in an integer array and the size of the array.
+Then returns a pointer to a structure containing the average, median
+and mode.  You will then write a printStat() function that will print
+the results contained in the stats structure.  I will input a small 
+array to test this out so ask for how many inputs to fill the array, 
+then the values to place into the array.  Make sure you delete the 
+dynamic array creation for the mode when you exit the problem.
+
+
+4) A company wants to transmit data over the telephone, but they are 
+concerned that their phones may be tapped. All of their data is 
+transmitted as four-digit integers. However, they utilize the digits 
+0,1,2,3,4,5,6,7 only. They have asked you to write a program that 
+will encrypt their data so that it may be transmitted more securely.
+Your application should read a four-digit integer with the numbers 
+0 to 7 entered by the user in an input dialog and encrypt it as 
+follows: Replace each digit by (the sum of that digit plus 3) modulus 8. 
+Then swap the first digit with the second, and swap the third digit 
+with the fourth. Then print the encrypted integer. Write a separate 
+application that inputs an encrypted four-digit integer and decrypts 
+it to form the original number.
+Note:  sometimes errors occur and the digits 8, and 9 might appear.  
+Detect this condition and flag the error.  Can't read in numbers 
+individually.  All the digits must be read with one cin statement.
+
+
+5)  a) Using a byte variable, what is the largest factorial that can 
+be calculated.  A factorial is simply 
+
+n! = 1 * 2 * 3 * 4 ... * (n-2) * (n-1) * n
+
+For instance, 1! = 1,  2! = 2,  3! = 6,  4! = 24,  5! = 120 etc....
+
+b)  What would be the largest factorial using short, int, long, float, 
+double, etc...  Use all the primitive data types that you are familiar 
+with.
+
+Note:  I want you to have fun investigating this and the program you 
+turn in should just print "cout" the final results.  You don't know 
+how to capture errors yet so run each till it overflows then back off by 1.
+Don't need the program that tests for this.
+
+
+6) a)  Convert the following 2 numbers to binary, octal and hex.
+	2.125, 0.06640625
+       When done, convert the following to a float representation.  
+	-2.125, 0.06640625.  In other words, I want an 8 digit hex 
+	number representation using the 4 byte float specification.
+   b)  Convert the float representations of the following into 
+	the decimal number.
+	46666601, 46666602, B9999AFE
+
+Note:  This doesn't require a program, however, I want you to write a 
+simple function that outputs the answers you did by hand with "cout".
+
