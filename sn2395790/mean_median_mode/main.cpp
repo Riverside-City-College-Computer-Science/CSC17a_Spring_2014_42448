@@ -175,3 +175,7 @@ float sumAry(int a[], int n){
     
     return mean;
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> FETCH_HEAD

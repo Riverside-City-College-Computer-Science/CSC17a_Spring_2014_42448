@@ -21,7 +21,12 @@ FC=gfortran
 AS=as
 
 # Macros
+<<<<<<< HEAD
+CND_PLATFORM=GNU-MacOSX
+CND_DLIB_EXT=dylib
+=======
 CND_PLATFORM=Cygwin_4.x-Windows
+>>>>>>> FETCH_HEAD
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -55,9 +60,15 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
+<<<<<<< HEAD
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mean_median_mode
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mean_median_mode: ${OBJECTFILES}
+=======
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mean_median_mode.exe
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mean_median_mode.exe: ${OBJECTFILES}
+>>>>>>> FETCH_HEAD
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mean_median_mode ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
@@ -72,7 +83,11 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+<<<<<<< HEAD
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mean_median_mode
+=======
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mean_median_mode.exe
+>>>>>>> FETCH_HEAD
 
 # Subprojects
 .clean-subprojects:
