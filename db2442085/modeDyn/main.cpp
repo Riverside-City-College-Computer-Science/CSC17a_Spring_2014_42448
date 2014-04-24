@@ -15,49 +15,49 @@ using namespace std;
 //function prototypes
 int * filAray(int);
 void prntAry(int *, int, int);
-int * sort(const int *,int);
+void sort(const int *,int [],int);
 int maxFreq(int *,int);
-int * numModes(int *, int, int);
+void numModes(int [], int, int);
 void destroy(int *);
 //Execution Begins Here
 int main(int argc, char** argv) {
     //Declare variables
-    const int SIZE=105;
+    srand(static_cast<unsigned int>(time(0)));
+    const int SIZE=100;
     int *array=filAray(SIZE);
-    int *brray=sort(array,SIZE);
+    int brray[SIZE];
     int max;
     //print array
-    prntAry(array,SIZE,10);
+    prntAry(array,SIZE,10); 
+    //sort
+    sort(array,brray,SIZE);
     //print
     prntAry(brray,SIZE,10);
-    //exit stage right
+    //frequency
     max=maxFreq(brray,SIZE);
-    cout<<"The max frequency is "<<max<<endl;
-    int *crray=numModes(brray,SIZE,max);
-    //print
-    prntAry(crray,SIZE,10);
+    cout<<"\nThe max frequency is "<<max<<endl;
+    numModes(brray,SIZE,max);    
     
-    destroy(array);
-    destroy(brray);
-    destroy(crray);      
+    destroy(array);   
     return 0;
 }
 void destroy(int *a){
-    delete a;
+    delete [] a;
 }
-int * numModes(int *a, int n, int m){
-    int * b=new int(n);
+void numModes(int a[], int n, int m){
     int count=1;
+    cout<<"Number(s): ";
     for(int i=1;i<n;i++){
          if(a[i-1]==a[i]){
              count++;
-             if(count==m) b[i]=a[i];
+             if(count==m) cout<<a[i]<<" ";
          }else{
                  count=1;
          }   
        }
-    return b;
+    cout<<endl;
 }
+
 //requires sorted array (binary search)
 int maxFreq(int *a,int n){
     //declare counters
@@ -73,23 +73,21 @@ int maxFreq(int *a,int n){
      }
     return max;
 }
-int * sort(const int *a, int n){
-    int * b=new int(n);
+void sort(const int *a,int b[], int n){
     //make copy
-    for(int i=0; i<n;i++){
+    for(int i=0;i<n;i++){
         b[i]=a[i];
     }
     //sort copied array
-    for(int i=0; i<n-1;i++){
-        for(int j=i+1; j<n;j++){
-            if (b[i]>b[j]){
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            if(b[i]>b[j]){
                 int temp=b[i];
                 b[i]=b[j];
                 b[j]=temp;
                 }
          }
     }
-    return b;
 }
 void prntAry(int *a ,int n, int perLine){
     cout<<endl;
@@ -101,9 +99,14 @@ void prntAry(int *a ,int n, int perLine){
 }
 //repetitive count w/ 1 digit elements
 int * filAray(int n){
-    int * a=new int(n);
-    for(int i=0; i<n;i++){
-        a[i]=i%10;
+    //Declare and allocate the dynamic array
+    if(n<1)n=1;
+    //Allocate memory
+    int *a=new int[n];
+    //Fill with data
+    for(int i=0;i<n;i++){
+        a[i]=rand()%10;
     }
+    //Return and exit with memory allocated array
     return a;
 }
