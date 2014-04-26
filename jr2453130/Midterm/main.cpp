@@ -53,6 +53,8 @@ void problem6();
 //Function Prototypes for Problems
 statsResult *avgMedMode(int *,int);
 //printStat();
+void encrypt(int [],int,string);
+void decrypt(int [],int,string);
 
 //Begin Execution Here!!!
 int main(int argv,char *argc[]){
@@ -103,7 +105,7 @@ void problem1(){
     do{
         cout<<"Enter your 5 digit bank account number: ";
         cin>>user.acc;
-        if(user.acc.length()!=5)cout<<"This is not a correct account number."<<endl;
+        if(user.acc.length()!=5)cout<<"This is not a valid account number."<<endl;
     }while(user.acc.length()!=5);
     
     
@@ -226,14 +228,148 @@ statsResult *avgMedMode(int *a,int n){
 
 void problem4(){
     cout<<"In problem # 4"<<endl<<endl;
+    
+    int SIZE=4, len=4;
+    string code;
+    int digits[SIZE];
+    char crypt;
+    
+    do{
+        cout<<"Do you want to encrypt a code or decrypt a code?"<<endl;
+        cout<<"Enter E(e) for encrypt or D(d) to decrypt:";
+        cin>>crypt;
+        if(crypt!='E'&&crypt!='e'&&crypt!='D'&&crypt!='d')
+            cout<<"Not valid selection!"<<endl;
+    }while(crypt!='E'&&crypt!='e'&&crypt!='D'&&crypt!='d');
+    
+    //get number from user
+    do{
+        cout<<"Enter 4-digit code ONLY using 0-7"<<endl;
+        cin>>code;
+        len=code.length();
+        if(len!=4)cout<<"This is not a valid 4-digit code!"<<endl;
+    }while(len!=4);
+    
+    //pull int digits from string
+    for (int i=0;i<SIZE;i++){
+        digits[i]=code[i]-48;
+    }
+    
+    //decide whether to run encryption or decryption
+    if(crypt=='E'||crypt=='e')encrypt(digits,SIZE,code);
+    else decrypt(digits,SIZE,code);
+    
+}
+
+void encrypt(int d[],int n,string c){
+    //encrypt data
+    for(int i=0;i<n;i++){
+        d[i]+=3;
+        d[i]%=8;
+    }
+    
+    //swap 1 and 2, then 3 and 4
+    int temp;
+    temp=d[0];
+    d[0]=d[1];
+    d[1]=temp;
+    temp=d[2];
+    d[2]=d[3];
+    d[3]=temp;
+    
+    //output encrypted code
+    cout<<"\nEncrypted Code:"<<endl;
+    for(int j=0;j<n;j++){
+        cout<<d[j];
+    }
+    cout<<endl<<endl;
+}
+
+void decrypt(int d[],int n,string c){
+    //decrypt data
+    for(int i=0;i<n;i++){
+        if(d[i]>=3&&d[i]<=7)d[i]-=3;
+        if(d[i]>=0&&d[i]<=2)d[i]+=5;
+    }
+    
+    //swap 1 and 2, then 3 and 4
+    int temp;
+    temp=d[0];
+    d[0]=d[1];
+    d[1]=temp;
+    temp=d[2];
+    d[2]=d[3];
+    d[3]=temp;
+    
+    //output encrypted code
+    cout<<"\nDecrypted Code:"<<endl;
+    for(int j=0;j<n;j++){
+        cout<<d[j];
+    }
+    cout<<endl<<endl;
 }
 
 void problem5(){
     cout<<"In problem # 5"<<endl<<endl;
+    
+    cout<<"In problem # 5"<<endl<<endl;
+    
+    
+    /*
+    //calculating the ranges
+    double factorial=1;
+    int n;
+    cout<<"Give n:";
+    cin>>n;
+    
+    for (int i=1;i<=n;i++){
+        factorial=factorial*i;
+        cout<<i<<": "<<factorial<<endl;
+    }
+     * 
+    cout<<"Factorial of "<<n<<" = "<<factorial<<endl<<endl;
+    */
+    
+    cout<<"a) The highest factorial for a byte variable is 5!"<<endl;
+    cout<<"b)"<<endl;
+    cout<<"The highest factorial for a short variable is 7!"<<endl;
+    cout<<"The highest factorial for a int variable is 12!"<<endl;
+    cout<<"The highest factorial for a long variable is 12!"<<endl;
+    cout<<"The highest factorial for a float variable is 34!"<<endl;
+    cout<<"The highest factorial for a double variable is 170!"<<endl<<endl;
 }
 
 void problem6(){
     cout<<"In problem # 6"<<endl<<endl;
+    
+    /*
+     * a)  Convert the following 2 numbers to binary, octal and hex.
+	2.125, 0.06640625
+       When done, convert the following to a float representation.  
+	-2.125, 0.06640625.  In other words, I want an 8 digit hex 
+	number representation using the 4 byte float specification.
+     */
+    
+    cout<<"Convert 2.125 to Binary, Octal and Hex"<<endl;
+    cout<<"Binary: 10.001"<<endl;
+    cout<<"Octal:  2.1"<<endl;
+    cout<<"Hex:    2.2"<<endl;
+    
+    cout<<"Convert 0.06640625 to Binary, Octal and Hex"<<endl;
+    cout<<"Binary: 0.00010001"<<endl;
+    cout<<"Octal:  0.042"<<endl;
+    cout<<"Hex:    0.11"<<endl;
+    
+    
+    
+    cout<<"Convert into float representation"<<endl;
+    cout<<"-2.125 -> "<<endl;
+    cout<<"0.06640625 -> "<<endl;
+    
+    /*b)  Convert the float representations of the following into 
+	the decimal number.
+	46666601, 46666602, B9999AFE
+    */
 }
 
 void def(int choice){
