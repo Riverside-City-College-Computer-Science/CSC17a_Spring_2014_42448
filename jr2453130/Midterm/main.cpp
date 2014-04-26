@@ -50,9 +50,13 @@ void problem4();
 void problem5();
 void problem6();
 
-//Function Prototypes for Problems
-statsResult *avgMedMode(int *,int);
-//printStat();
+//Function Prototypes for Problem 3
+int * fillArray(int);
+void sort(int *,int);
+statsResult * avgMedMode(int *,int);
+void printStat(statsResult *);
+
+//Function Prototypes for Problem 4
 void encrypt(int [],int,string);
 void decrypt(int [],int,string);
 
@@ -96,7 +100,8 @@ void problem1(){
     
     //Declare Variables
     BankAcc user;
-    string accnt;
+    string accnt; //I can't figure out any other way than to use strings
+                  //and after ridiculous searching online can't find a way. :(
     int chk, checks, dep, deps, fBal;
     user.chckTot=0;
     user.depTot=0;
@@ -197,40 +202,170 @@ void problem2(){
 void problem3(){
     cout<<"In problem # 3"<<endl<<endl;
     
+    /*
+    3) Write a function using the following structure and prototype.
+
+    struct statsResult
+    {
+        float avg;
+        float median;
+        int *mode;   //array containing the modes
+        int nModes;  //number of modes in the array
+        int maxFreq; //max frequency of modes
+    };
+
+    statsResult *avgMedMode(int *,int);
+    
+    The function takes in an integer array and the size of the array.
+    Then returns a pointer to a structure containing the average, median
+    and mode.  You will then write a printStat() function that will print
+    the results contained in the stats structure.  I will input a small 
+    array to test this out so ask for how many inputs to fill the array, 
+    then the values to place into the array.  Make sure you delete the 
+    dynamic array creation for the mode when you exit the problem.
+    */
+    
     //declare variables
-    int size;
+    int nums;
     
     //get size of array
-    cout<<"How many ints in the array?: ";
-    cin>>size;
-    int *array=new int[size];
+    cout<<"How many integers in the array?: ";
+    cin>>nums;
     
     //fill array
-    for(int i=0;i<size;i++){
-        cout<<"Enter element "<<i<<": ";
-        cin>>array[i];
-    }
-    cout<<endl;
+    int *array=fillArray(nums);
+    
+    //sort array for median/mode
+    sort(array,nums);
     
     //calculate
-    avgMedMode(array,size);
+    statsResult *stats=avgMedMode(array,nums);
     
+    //print results
+    printStat(stats);
     
+    //seek and destroy!
     delete []array;
-}
-
-statsResult *avgMedMode(int *a,int n){
-        
+    delete []stats;
     
+    cout<<endl<<endl;
+    //Exit stage right
 }
 
+int * fillArray(int n){
+    //Declare allocated memory
+    int *a=new int[n];
+    
+    //fill array
+    for(int i=0;i<n;i++){
+        cout<<"Enter element "<<i+1<<": ";
+        cin>>a[i];
+    }
+    cout<<endl;
+    return a;
+}
+
+void sort(int *a,int n){
+    //sort the copied array
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            if(a[i]>a[j]){
+                int temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+    cout<<"Sorted Array: ";
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+}
+
+statsResult * avgMedMode(int *a,int n){
+    //declare variables
+    int sum=0;
+    statsResult *s = new statsResult;
+    
+    //get avg
+    float nums=static_cast<float>(n);
+    for (int i=0;i<n;i++){
+        sum+=a[i];
+    }
+    s->avg=(sum/nums);
+    
+    //get median
+    if(n%2==0)s->median=(a[(n/2)-1]+a[n/2])/2.0;
+    else
+        s->median=a[(n/2)];
+    
+    //get max freq
+    int count=1, max=1;
+    
+    //loop and compare
+    for(int i=1;i<n;i++){
+        if(a[i-1]==a[i]){
+            count++;
+            if(count>max)max=count;
+        }else{
+            count=1;
+        }
+    }
+    s->maxFreq=max;
+    
+    //get num modes
+    int modes=0;
+    for(int i=1;i<n;i++){
+        if(a[i-1]==a[i]){
+            count++;
+            if(count==max){
+                modes++;
+                count=1;                
+            }
+        }
+    }
+    s->nModes=modes;
+    
+    //get modes
+    int *m=new int[s->nModes];
+    int mcount=0;
+    for(int i=1;i<n;i++){
+        if(a[i-1]==a[i]){
+            count++;
+            if(count==max){
+                count=1;
+                m[mcount]=a[i];
+                mcount++;
+            }
+        }
+    }
+    s->mode=m;
+
+    return s;
+}
+
+void printStat(statsResult *s){
+    cout<<endl<<"Avg: "<<s->avg<<endl<<"Median: "<<s->median<<endl
+        <<"Num Modes: "<<s->nModes<<endl<<"Max Freq: "<<s->maxFreq<<endl;
+    cout<<"Mode(s): ";
+    for(int i=0;i<s->nModes;i++){
+        cout<<s->mode[i]<<" ";
+    }
+    cout<<endl<<endl;
+}
+
+void destroy(int *a){
+    delete []a;
+}
 
 
 void problem4(){
     cout<<"In problem # 4"<<endl<<endl;
     
     int SIZE=4, len=4;
-    string code;
+    string code; //I can't figure out any other way than to use strings
+                 //and after ridiculous searching online can't find a way. :(
     int digits[SIZE];
     char crypt;
     
@@ -334,7 +469,7 @@ void problem5(){
     cout<<"b)"<<endl;
     cout<<"The highest factorial for a short variable is 7!"<<endl;
     cout<<"The highest factorial for a int variable is 12!"<<endl;
-    cout<<"The highest factorial for a long variable is 12!"<<endl;
+    cout<<"The highest factorial for a long variable is 20!"<<endl;
     cout<<"The highest factorial for a float variable is 34!"<<endl;
     cout<<"The highest factorial for a double variable is 170!"<<endl<<endl;
 }
@@ -342,14 +477,7 @@ void problem5(){
 void problem6(){
     cout<<"In problem # 6"<<endl<<endl;
     
-    /*
-     * a)  Convert the following 2 numbers to binary, octal and hex.
-	2.125, 0.06640625
-       When done, convert the following to a float representation.  
-	-2.125, 0.06640625.  In other words, I want an 8 digit hex 
-	number representation using the 4 byte float specification.
-     */
-    
+    cout<<"a)"<<endl;
     cout<<"Convert 2.125 to Binary, Octal and Hex"<<endl;
     cout<<"Binary: 10.001"<<endl;
     cout<<"Octal:  2.1"<<endl;
@@ -358,18 +486,19 @@ void problem6(){
     cout<<"Convert 0.06640625 to Binary, Octal and Hex"<<endl;
     cout<<"Binary: 0.00010001"<<endl;
     cout<<"Octal:  0.042"<<endl;
-    cout<<"Hex:    0.11"<<endl;
-    
-    
-    
+    cout<<"Hex:    0.11"<<endl<<endl;
     cout<<"Convert into float representation"<<endl;
-    cout<<"-2.125 -> "<<endl;
-    cout<<"0.06640625 -> "<<endl;
+    cout<<"-2.125 -> F0000001"<<endl;
+    cout<<"0.06640625 -> 880000FD"<<endl<<endl;
     
-    /*b)  Convert the float representations of the following into 
-	the decimal number.
-	46666601, 46666602, B9999AFE
-    */
+    cout<<"b)"<<endl;
+    cout<<"Convert from float representation to decimal"<<endl;
+    cout<<"46666601 ->  0.55"<<endl
+        <<"46666602 ->  1.10"<<endl
+        <<"B9999AFE -> -1.10"<<endl<<endl;
+    
+    
+    
 }
 
 void def(int choice){
