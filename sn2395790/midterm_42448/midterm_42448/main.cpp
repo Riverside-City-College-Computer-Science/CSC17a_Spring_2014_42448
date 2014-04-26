@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 //Global Constants
@@ -29,6 +30,12 @@ int getBal();//collects initial balance
 int getChk();//collects total amount of checks written
 int getDep();//collects total amount of deposits made 
 int getTot(int, int, int);//calculates new balance of account
+//Function prototypes for problem 2
+string getName(int);//gets employee name
+int getHrs(int);//gets employee hours worked
+float getRt(int);//gets employee pay rate
+float getGrs(int, float);//gets employee gross pay
+void rprt(int[], float);
 
 //Declare structures
 //Structure for problem 1
@@ -38,6 +45,13 @@ struct info{
     int chcks;//total of checks written during the month
     int depst;//total of deposits made during the month
     int newBal;//balance after calculations
+};
+//Structure for problem 2
+struct empInfo{
+    string name;//employee's name
+    int hours;//hours worked
+    float rate;//rate of pay
+    float gross;//gross pay
 };
 
 //Begin Execution Here!!!
@@ -265,7 +279,138 @@ void acntNum(string &accnt){
 }
 
 void problem2(){
-        cout<<"In problem # 2"<<endl<<endl;
+        
+    //Declare variables
+    int choice, totHrs=0;
+    float totGrs=0;//total gross pay for all employees combined
+    
+    //Prompt user for number of employees
+    cout<<"How many employees are you calculating for?"<<endl;
+    cin>>choice;
+    
+    //test if input is valid
+    if(choice<0){
+        do{
+            //inform user of error and prompt for balance again
+            cout<<"Invalid amount, please enter a value above 0"<<endl;
+            cin>>choice;
+
+        }while(choice<0);
+    }
+    //initialize structure array
+    empInfo emp[choice];
+    
+    //send choice to function to loop
+    for(int i=0;i<choice;i++){
+        //obtain employee name
+        emp[i].name = getName(i);
+        
+        //obtain employee hours worked
+        emp[i].hours = getHrs(i);
+        
+        //obtain employee pay rate
+        emp[i].rate = getRt(i);
+        
+        //calculate employees gross pay
+        emp[i].gross = getGrs(emp[i].hours,  emp[i].rate);
+        
+        //add employee's information to totals
+        totHrs += emp[i].hours;
+        totGrs += emp[i].gross;
+    }
+    
+    //Output report
+    cout<<"_________________Labor Report__________________"<<endl;
+    cout<<"Name       hours Worked    rate       gross pay"<<endl;
+    for(int i=0;i<choice;i++){
+        cout<<setw(11)<<emp[i].name<<setw(10)<<emp[i].hours;
+        cout<<setw(10)<<showpoint(2)<<fixed<<emp[i].rate;
+        cout<<setw(10)<<showpoint(2)<<fixed<<emp[i].gross<<endl;
+    }
+    cout<<"Total hours :"<<totHrs<<" hours"<<endl;
+    cout<<"Total gross pay: $"<<showpoint(2)<<fixed<<totGrs<<endl;
+    //Exit Problem 2
+}
+string getName(int i){
+    
+    //declare temp variable
+    string temp;
+    
+    //prompt user for employee name
+    cout<<"Input name for employee #"<<i<<": ";
+    cin.ignore();
+    getline(cin, temp);
+    
+    return temp;
+}
+int getHrs(int i){
+    
+    //declare temp variable
+    int temp;
+    
+    //prompt user for employee's hours worked
+    cout<<"Input hours worked for employee #"<<i<<": ";
+    cin>>temp;
+    
+    //test if input is valid
+    if(temp<0){
+        do{
+            //inform user of error and prompt for balance again
+            cout<<"Invalid amount, please enter a value above 0"<<endl;
+            cin>>temp;
+
+        }while(temp<0);
+    }
+    
+    return temp;
+}
+float getRt(int i){
+    
+    //declare temp variable
+    float temp;
+    
+    //prompt user for employee's pay rate
+    cout<<"Input pay ratee for employee #"<<i<<" in dollars per hour: ";
+    cin>>temp;
+    
+    //test if input is valid
+    if(temp<0){
+        do{
+            //inform user of error and prompt for balance again
+            cout<<"Invalid amount, please enter a value above 0"<<endl;
+            cin>>temp;
+
+        }while(temp<0);
+    }
+    
+    return temp;
+}
+float getGrs(int h, float r){
+    
+    //declare temporary variables
+    float temp=0;
+    
+    //test amount of hours and calculate gross pay accordingly
+    if(h>40){
+        //add triple time
+        temp += (h-40) * (3.0*r);
+        //add double time
+        temp += 20 * (2.0*r);
+        //add straight time;
+        temp += 20.0 * r;
+    }
+    else if(h<=40&&h>20){
+        //add double time
+        temp += (h-20) * (2.0*r);
+        //add straight time
+        temp += 20.0 * r;
+    }
+    else if(h<=20){
+        //add straight time
+        temp += 20.0 * r;
+    }
+    
+    return temp;
 }
 
 void problem3(){
