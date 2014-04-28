@@ -20,6 +20,9 @@
                 </confElem>
             </confList>
             <sourceEncoding>UTF-8</sourceEncoding>
+            <formatting>
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
         </data>
     </configuration>
 </project>

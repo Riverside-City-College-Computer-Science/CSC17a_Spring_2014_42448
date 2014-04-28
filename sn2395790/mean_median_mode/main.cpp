@@ -19,7 +19,6 @@ void prntAry(int[],int, int);
 void sort(int[], int[], int);
 int maxFreq(int[], int);
 int numModes(int [], int, int);
-int modeNm(int [], int, int, int);
 float sumAry(int [], int);
 
 //Begin execution here
@@ -175,3 +174,4 @@ float sumAry(int a[], int n){
     
     return mean;
 }
+

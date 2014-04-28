@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=Cygwin_4.x-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Debug=comparestaticanddynamicmemory
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/comparestaticanddynamicmemory
-CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Debug=comparestaticanddynamicmemory.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/comparestaticanddynamicmemory.tar
+CND_PLATFORM_Debug=GNU-MacOSX
+CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-MacOSX
+CND_ARTIFACT_NAME_Debug=static_dynamic_vector_arrays
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/static_dynamic_vector_arrays
+CND_PACKAGE_DIR_Debug=dist/Debug/GNU-MacOSX/package
+CND_PACKAGE_NAME_Debug=staticdynamicvectorarrays.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/staticdynamicvectorarrays.tar
 # Release configuration
-CND_PLATFORM_Release=Cygwin_4.x-Windows
-CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Release=comparestaticanddynamicmemory
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/comparestaticanddynamicmemory
-CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Release=comparestaticanddynamicmemory.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/comparestaticanddynamicmemory.tar
+CND_PLATFORM_Release=GNU-MacOSX
+CND_ARTIFACT_DIR_Release=dist/Release/GNU-MacOSX
+CND_ARTIFACT_NAME_Release=static_dynamic_vector_arrays
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/static_dynamic_vector_arrays
+CND_PACKAGE_DIR_Release=dist/Release/GNU-MacOSX/package
+CND_PACKAGE_NAME_Release=staticdynamicvectorarrays.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/staticdynamicvectorarrays.tar
 #
 # include compiler specific variables
 #

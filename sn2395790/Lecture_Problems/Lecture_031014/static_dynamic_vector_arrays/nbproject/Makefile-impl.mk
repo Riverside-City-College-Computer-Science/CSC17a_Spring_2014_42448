@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Comparestaticanddynamicmemory
+PROJECTNAME=static_dynamic_vector_arrays
 
 # Active Configuration
 DEFAULTCONF=Debug
