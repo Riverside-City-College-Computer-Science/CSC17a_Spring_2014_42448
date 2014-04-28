@@ -20,6 +20,16 @@ struct Order
     char itemDone[100];
 };
 
+struct SP
+{
+	char recipient[25];
+	char address[30];
+	int phone;
+	char answer;
+	
+
+};
+
 
 
 #endif	/* STRUCT_H */

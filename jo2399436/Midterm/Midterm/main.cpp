@@ -13,12 +13,10 @@
 using namespace std;
 
 //Function Prototypes
-//void writeFile();
-//void inputData();
-//void ordering();
+void ordering();
 //int exiting();
 void SpOrder();
-//void WPack();
+void WPack();
 //void FPack();
 
 
@@ -36,7 +34,7 @@ int main(int argc, char** argv)
 	int Mchoice;
 	
     cout << "\n\nThe Bloom Room\n";
-	cout << "1545 Levi Way\n Claremont, CA 91711 ";
+	cout << "1545 Levi Way\nClaremont, CA 91711\n";
     cout << "_______________________________________________" << endl;
     cout << "Name\t\tAmount in Stock\t Price per Stem\n\n";
 	cout << "_______________________________________________\n\n";
@@ -52,22 +50,26 @@ int main(int argc, char** argv)
 			cout <<"\t\t"<< db[i].amount<<"\t\t";
 		cout << "$ " <<setprecision(2)<< db[i].price<< endl;
     }
-	cout << "______________________________________________";
-	cout << "\n\n\t\t    Menu: \n______________________________________________";
-	cout << "\n\n\t 1: Order a Bouquet \n\t 2: Special Order\n";
-	cout << "\t 3: Wedding Packages \n\t 4: Funeral Packages \n\t 5: Exit";
-	cout << "\n______________________________________________";
-	cout << "\nPlease enter the choice number of your command.\n";
+	do
+	{
+		cout << "______________________________________________";
+		cout << "\n\n\t\t    Menu: \n______________________________________________";
+		cout << "\n\n\t 1: Order a Bouquet \n\t 2: Special Order\n";
+		cout << "\t 3: Wedding Packages \n\t 4: Funeral Packages \n\t 5: Exit";
+		cout << "\n______________________________________________";
+		cout << "\nPlease enter the choice number of your command.\n";
 	cin >> Mchoice;
 	cout << endl;
 	switch(Mchoice)
 	{
 	case 1:
+		ordering();
 		break;
 	case 2:
 		SpOrder();
 		break;
 	case 3:
+		WPack();
 		break;
 	case 4:
 		break;
@@ -75,6 +77,7 @@ int main(int argc, char** argv)
 		//exiting();
 		break;
 	}
+	}while(Mchoice >=1&& Mchoice <=5);
   
 	
 
@@ -83,53 +86,64 @@ int main(int argc, char** argv)
     cin.get();
     return 0;
 }
-//void ordering()
-//{
-//
-//}
-//int exiting()
-//{
-//return 0;
-//}
+void ordering( )
+{
+
+}
+
 void SpOrder()
 {
 	fstream file;
+	SP sp;
 	//variables
-	string *SPtr;
-	int *SPtr2;
-	const int SIZE = 25;
+	int *SPtr;
+	char *ptr2;
+	const int SIZE = 30;
 	int SpOrder;
 	int total=0;
-	char answer;
-	char AD[50];
-	char PN[10];
-	char recipient[SIZE];
+	string *F, *C;
+	 
 	cout << "\nHow many flowers would you like to be special ordered?";
 	cin >> SpOrder;
+	cin.ignore();
 	//allocating memory
-	SPtr = new string[SpOrder];
-	SPtr2 = new int[SpOrder];
+	SP *ptr = new SP[SpOrder];
+	SPtr = new int[SpOrder];
+	F = new string [SpOrder];
+	C = new string[SpOrder];
+	
+	
 	//inputing flowers names
 	for (int i=0;i < SpOrder; i++)
 	{
-		cout << "Flower " << i+1 << ": ";
-		getline(cin, *(SPtr+i));
+		cout << "Flower Name " << i+1 << ": ";
+		cin >> *(F+i);
+		cout << "Color: ";
+		cin >> *(C+i);
 		cout << "Number of this type of flower:";
-		cin >>*(SPtr2+i);
+		cin >>*(SPtr+i);
 	}
 	for (int i=0;i< SpOrder;i++)
-		total += *(SPtr2+i);
+		total += *(SPtr+i);
+	cin.ignore();
+	
+	char address[30];
 	cout << "Please enter the name of the recipient.";
-	getline(recipient, SIZE);
+	cin.getline (ptr->recipient, 25 );
+	
 	cout << "Please enter your address.";
-	cin >> AD;
+	cin.getline (ptr->address, 30);
+	
 	cout <<"Please enter you phone number (ex: 9511234567)";
-	cin >> PN;
+	cin >> ptr->phone;
 	cout << "\n\Special Order:\n\n";
-	cout << "Name:" << recipient << endl <<"Address:"<< AD << endl;
-	cout << "Phone Number: "<< PN<<endl <<"Flowers: ";
+	cout << "Name:" << ptr->recipient << endl <<"Address:"<< ptr->address << endl;
+	cout << "Phone Number: "<< ptr->phone <<endl <<"Flowers: ";
 	for ( int i =0;i < SpOrder; i++)
-		cout << *(SPtr+i) << endl;
+		{
+			cout << *(F+i) << "  ";
+			cout << *(SPtr+i) << endl;
+		}
 	cout <<"Price of Flowers: Varies\n";
 	cout << "A representative will call you within the day to give you the quote.\n";
 	cout << "Shipping will take between 4-6 days ( in state shipping only)\n";
@@ -146,27 +160,104 @@ void SpOrder()
 	else 
 		cout << "Shipping Cost: 19.99\n";
 	cout <<"Would you like to place this order?(Y/N)\n";
-	cin >> answer;
+	cin >> ptr->answer;
 	
-	if(answer == 'Y' || answer == 'y')
+	if(ptr->answer == 'Y' || ptr->answer == 'y')
 	{
-		file.open("SpecialOrder.txt", ios::out);
-		file  <<recipient << endl << AD << endl;
-		file <<  PN<<endl ;
+		file.open("C:\\Users\\Jazmin\\Documents\\Visual Studio 2010\\Projects\\Midterm\\SpecialOrder.txt");
+			if (file.fail())
+		{
+			cout << "Error opening file.\n";
+		}
+	else
+	{
+		file  <<"Name: " <<ptr->recipient << endl << "Address: "<<ptr->address
+			<< endl << "Phone: " << ptr->phone <<endl << "Flowers: ";
+		for ( int i =0;i < SpOrder; i++)
+		{
+			file << *(F+i) << "  ";
+			file << *(SPtr+i) << endl;
+			cout << "Color: " << *(C+i);
+		} ;
 
 		file.close();
+	}
 
 	}
-	else if (answer == 'N' || answer == 'n')
+	else if (ptr->answer == 'N' || ptr->answer == 'n')
 	{
 		delete SPtr;
-		delete SPtr2;
+		delete ptr;
+		delete F;
+		delete C;
 	}
 	else
 	cout << "That answer was not recognized.";
 }
-//void WPack()
-//{}
+void WPack()
+{
+	fstream file;
+	int num;
+	int total;
+	char ans;
+	cout << "\t\tWedding Packages:\n____________________________________________\n";
+	cout << "1. Bronze Package \nIncludes: Brides Bouquet and Grooms Boutonniere\n";
+	cout << "Cost: $125.00 ";
+	cout <<"\n\n2. Silver Package \nIncludes: Brides Bouquet and Grooms Boutonniere\n";
+	cout << "Maid of Honor Bouquet and Best Man Boutonniere\n";
+	cout << "Cost: $200.00";
+	cout << "\n\n3. Gold Package \nIncludes Brides Bouquet and Grooms Boutonniere\n";
+	cout << "Maid of Honor Bouquet and Best Man Boutonniere\n";
+	cout << "5 Bridesmaids and Groomsmen Bouquets and Boutonnieres\n";
+	cout << "Cost: $300.00";
+	cout <<"\n\n4. Platinum Package \nIncludesBrides Bouquet and Grooms Boutonniere\n";
+	cout << "Maid of Honor Bouquet and Best Man Boutonniere\n";
+	cout << "5 Bridesmaids and Groomsmen Bouquets and Boutonnieres\n";
+	cout << "15 Centerpieces\n";
+	cout << "Cost: $550.00\n\n";
+	cout << "What package would you ike to order?";
+	cin >> num;
+	switch(num)
+	{
+	case 1:
+		total = 125;
+		break;
+	case 2:
+		total = 200;
+		break;
+	case 3:
+		total = 300;
+		break;
+	case 4: 
+		total = 550;
+		break;
+	}
+	cout << "Would you like to place your order?";
+	cin >> ans;
+	if(ans == 'Y' || ans == 'y')
+	{
+		file.open("C:\\Users\\Jazmin\\Documents\\Visual Studio 2010\\Projects\\Midterm\\WeddingOrder.txt");
+			if (file.fail())
+		{
+			cout << "Error opening file.\n";
+		}
+		else
+		{
+			cout << "Your order is being saved.";
+			file << "Total: $" << total;
+			file.close();
+		}
+	}
+	else if(ans == 'N' || ans == 'n')
+		cout << "Your order was cancelled.\n";
+	else
+		cout <<"That was not recognized";
+	
+	
+	
+
+
+}
 //void FPack()
 //{}
 
