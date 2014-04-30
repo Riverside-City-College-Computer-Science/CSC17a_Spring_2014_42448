@@ -1,0 +1,18 @@
+
+	
+				WELCOME TO MASTERMINDS
+
+HOW TO PLAY:
+
+The objective of this game is to guess the randomized 3, or 4 digit number.
+You will be given X amount of tries depending on your difficulty level. 
+After every try you will be given a hint. 
+Under your guess there will be either a "*", "^", or just a blank space. 
+The "*" symbolizes That number is in the sequence and it also in its proper placeing. 
+The "^" symbolizes that number is in the sequence yet it is in the INCORRECT placing. 
+If it is blank under the number that represents the number is not at all in the sequence. 
+If you guess the number under the expected amount of tries you win, and also are asked to enter 
+your name for the HighScore list, then asked if you want to play again or not. 
+If you exceed the amount of tries you loos and are asked if you would like to play again. Good Luck and have fun!
+
+To Play, Exit Screen 
