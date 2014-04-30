@@ -12,7 +12,7 @@
 #include "functions.h"
 using namespace std;
 
-
+//function that tests if user's guess is totally correct
 bool tstWin(char r[]){
     
     //test if code is correct
@@ -20,7 +20,7 @@ bool tstWin(char r[]){
     else 
         return true;
 }
-
+//Function that tests user's guess and gives user feedback
 void tstGess(char g[], char c[], char a[], char r[], int n){
     
     //declare temporary symbol array counter
@@ -38,8 +38,11 @@ void tstGess(char g[], char c[], char a[], char r[], int n){
     for(int i=0;i<n;i++){
         if(g[i]==c[i]){
             r[y]='X';
+            //give guess and code indeces new values
+            //this will prevent them being checked again
             g[i]=0;
             c[i]=7;
+            //if symbol array is used, increment array space
             y++;
         }
     }
@@ -47,6 +50,8 @@ void tstGess(char g[], char c[], char a[], char r[], int n){
     for(int i=0;i<n;i++){
         if(g[i]==c[0]||g[i]==c[1]||g[i]==c[2]||g[i]==c[3]){
             r[y]='0';
+            //give guess and code indeces new values
+            //this will prevent them being checked again
             g[i]=0;
             c[i]=7;
             y++;
@@ -85,6 +90,7 @@ void prpCode(char code[], char index[], int n){
     //declare bool value for number testing
     bool badnum;
     
+    //loop number generator until an acceptable code is generated
     do{
         //Generate 4 digit code, using only numbers 1 through 6
         for(int i=0;i<n;i++){
