@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
         
     }while(ply<tries&&win==true);
     
-    //output victory
+    //output victory or defeat
     if(win==false){
         cout<<"Hooray! you won"<<endl;
     }
