@@ -1,10 +1,11 @@
 
+
 #ifndef STRUCT_H
 #define	STRUCT_H
 
 struct DataB
 {
-    char FName[17];
+    char FName[20];
     int amount;
     float price;
 };
@@ -18,6 +19,13 @@ struct Order
     char address[30];
     char date[9];
     char itemDone[100];
+};
+
+struct SP
+{
+	char recipient[25];
+	char address[30];
+	char answer;
 };
 
 
