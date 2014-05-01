@@ -25,18 +25,18 @@ struct highscore{
 void rules(){
     
     //Display everything the user needs to know about playing
-    cout<<"\n                           Welcome to Mastermind!"<<endl;
+    cout<<"\n                                    Welcome to Mastermind!"<<endl;
     cout<<"   In Mastermind, you will try to break a 4 digit secret code, chosen by the computer. The digits in"<<endl;
     cout<<" the code will range from 1 to 6, you will have to guess what the digits are in the code, as well as"<<endl;
     cout<<" putting them in their correct positions. There may be two, or even three of the same digit. After  "<<endl;
     cout<<" every guess you will receive Feedback from the computer as to how accurate your guess was.         "<<endl;
-    cout<<"The Feedback:"<<endl;
+    cout<<" The Feedback:"<<endl;
     cout<<"   Feedback will be given in the form of a few symbols. X means that a number is a correct value and"<<endl;
     cout<<" is also in it's correct position. 0 means that a value is correct, but not in the correct spot. A _"<<endl;
     cout<<" means that a number does not belong in the code at all. It sounds easy, but be careful, because the"<<endl;
     cout<<" position of the symbols in the feedback does NOT correspond to the number you entered in that space."<<endl;
     cout<<" For example:  you enter: 5247, and receive: X00_ as feedback. This does NOT mean that the number 5  "<<endl;
-    cout<<" in in it's correct positions, it could be any of the numbers. Also the two 0's could mean that the "<<endl;
+    cout<<" in in it's correct position, it could be any of the numbers. Also the two 0's could mean that the "<<endl;
     cout<<" 4 and 7 are in incorrect positions. That's it! Good Luck!\n"<<endl;
 }
 
