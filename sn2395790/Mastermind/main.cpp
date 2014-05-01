@@ -11,7 +11,6 @@
 #include <ctime>
 #include <string>
 #include <fstream>
-//#include <limits>
 #include <windows.h>
 using namespace std;
 
@@ -91,7 +90,7 @@ int main(int argc, char** argv) {
             //press enter to continue
             cout<<"Press ENTER to continue..."<<endl;
             cin.get();
-            cin.get();
+            //cin.get()
             }
             
             //send player to high scores function
@@ -102,7 +101,7 @@ int main(int argc, char** argv) {
                 //press enter to continue
                 cout<<"Press ENTER to continue..."<<endl;
                 cin.get();
-                cin.get();
+                //cin.get();
             }     
         }
         //output rules 
@@ -111,14 +110,14 @@ int main(int argc, char** argv) {
             //press enter to continue
             cout<<"Press ENTER to continue..."<<endl;
             cin.get();
-            cin.get();
+            //cin.get();
         }
         if(choice==3){
-            score(ply);
+            score(0);
             //press enter to continue
             cout<<"Press ENTER to continue..."<<endl;
             cin.get();
-            cin.get();
+            //cin.get();
         }
         
         //exit game
