@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     //Declare Variables
     int SIZE=4, ply=0, tries, temp;
     char code[SIZE], index[SIZE], guess[SIZE], symb[SIZE], choice;
-    bool win = true;
+    bool win = false;
     
     //Loop game
     do{
@@ -71,10 +71,10 @@ int main(int argc, char** argv) {
                 //set win bool variable
                 win = tstWin(symb);
 
-            }while(ply<tries&&win==true);
+            }while(ply<tries&&win==false);
 
             //output victory or defeat
-            if(win==false){
+            if(win==true){
                 cout<<"CODE CRACKED!"<<endl;
             }
             else cout<<"You did not win"<<endl;

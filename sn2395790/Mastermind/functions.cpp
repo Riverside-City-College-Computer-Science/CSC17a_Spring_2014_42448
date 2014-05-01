@@ -150,9 +150,9 @@ int menu(){
 bool tstWin(char r[]){
     
     //test if code is correct
-    if(r[0]=='X'&&r[1]=='X'&&r[2]=='X'&&r[3]=='X') return false;
+    if(r[0]=='X'&&r[1]=='X'&&r[2]=='X'&&r[3]=='X') return true;
     else 
-        return true;
+        return false;
 }
 //Function that tests user's guess and gives user feedback
 void tstGess(char g[], char c[], char a[], char r[], int n){
