@@ -1,20 +1,18 @@
-﻿Build started 4/30/2014 12:30:05 PM.
+﻿Build started 4/30/2014 8:16:55 PM.
      1>Project "C:\Users\Jazmin\Documents\Visual Studio 2010\Projects\Midterm\Midterm\Midterm.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "Debug\Midterm.unsuccessfulbuild".
+         Creating "Debug\Midterm.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(66): warning C4305: 'initializing' : truncation from 'double' to 'float'
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(67): warning C4305: 'initializing' : truncation from 'double' to 'float'
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(70): warning C4305: 'initializing' : truncation from 'double' to 'float'
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(70): warning C4305: 'initializing' : truncation from 'double' to 'float'
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(71): warning C4101: 'or' : unreferenced local variable
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(73): warning C4101: 'choice' : unreferenced local variable
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(150): warning C4129: 'S' : unrecognized character escape sequence
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(108): warning C4101: 'sp' : unreferenced local variable
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(111): warning C4101: 'ptr2' : unreferenced local variable
-     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(141): warning C4101: 'address' : unreferenced local variable
+     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(147): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(166): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(71): warning C4101: 'order' : unreferenced local variable
+     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(214): warning C4101: 'sp' : unreferenced local variable
+     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(217): warning C4101: 'ptr2' : unreferenced local variable
+     1>c:\users\jazmin\documents\visual studio 2010\projects\midterm\midterm\main.cpp(247): warning C4101: 'address' : unreferenced local variable
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:

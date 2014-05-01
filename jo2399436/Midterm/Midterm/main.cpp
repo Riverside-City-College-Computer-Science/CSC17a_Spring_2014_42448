@@ -15,11 +15,8 @@ using namespace std;
 
 //Function Prototypes
 void ordering();
-//int exiting();
 void SpOrder();
 void WPack();
-//void FPack();
-
 
 int main(int argc, char** argv) 
 {
@@ -29,12 +26,13 @@ int main(int argc, char** argv)
     cout << "\n\nThe Bloom Room\n";
 	cout << "1545 Levi Way\nClaremont, CA 91711\n";
 
+	//displays the menu after choosing an option the menu come back
 	do
 	{
 		cout << "______________________________________________";
 		cout << "\n\n\t\t    Menu: \n______________________________________________";
 		cout << "\n\n\t 1: Order a Bouquet \n\t 2: Special Order\n";
-		cout << "\t 3: Wedding Packages \n\t 4: Funeral Packages \n\t 5: Exit";
+		cout << "\t 3: Wedding Packages \n\t 4: Exit";
 		cout << "\n______________________________________________";
 		cout << "\nPlease enter the choice number of your command.\n";
 	cin >> Mchoice;
@@ -49,11 +47,11 @@ int main(int argc, char** argv)
 		break;
 	case 3:
 		WPack();
-		break;
-	case 4:
+	case 4: 
+		cout << "You are exiting.";
 		break;
 	}
-	}while(Mchoice >=1&& Mchoice <5);
+	}while(Mchoice >=1&& Mchoice <4);
   
 	
     cin.ignore();
@@ -61,18 +59,21 @@ int main(int argc, char** argv)
     return 0;
 }
 // for Orders the  carries displays the info and then saves the order if the user wishes
+//writes to the file if the user wants to save the data
 void ordering( )
 {
-	DataB db[]={{"1. Alstroemeria", 300, 2.00},{"2. Agapanthus", 400, 3.40},{"3. Amaryllis", 200, 8.00},
-    {"4. Aster", 200, 2.20},{"5. Bird of Paradise", 300 ,4.00},{"6. Calla", 200, 4.00},{"7 Carnation", 500, 0.50},
-    {"8. Chrysanthemum", 400, 1.50},{"9. Daffodil", 400, 1.50},{"10. Daisy", 400, 1.50},{"11. Delphinium", 300, 2.50},
-    {"12. Ginger (Red)", 200, 4.00},{"13. Gardenia", 100, 18.00},{"14. Gladiolus", 250, 3.50},{"15. Iris", 400, 2.00},
-    {"16. Lily", 400, 3.00},{"17. Orchid", 100, 27.00}, {"18. Roses", 400, 2.00},{"19. Sunflower", 150, 3.20},{"20. Tulip", 250, 1.40}};
+	fstream file;
+	DataB db[]={{"1. Alstroemeria", 40.00},{"2. Agapanthus",  68.00},{"3. Amaryllis", 160.00},
+    {"4. Aster",  44.00},{"5. Bird of Paradise" ,80.00},{"6. Calla", 80.00},{"7. Carnation",  15.00},
+    {"8. Chrysanthemum",  30.00},{"9. Daffodil", 20.00},{"10. Daisy",  20.00},{"11. Delphinium",  50.00},
+    {"12. Ginger (Red)",  80.00},{"13. Gardenia",  180.00},{"14. Gladiolus",  70.00},{"15. Iris",  40.00},
+    {"16. Lily",  80.00},{"17. Orchid", 430.00}, {"18. Rose",  40.00},{"19. Sunflower", 75.00},{"20. Tulip",  50.00}};
     Order order;
 	int NSize;
-	int choice, num;
-	int *ptr;
-
+	int choice, num, total =0;
+	char noMsg[11] = "No message";
+	char noDel[20] = "Not being delieved";
+	
 	cout << "_______________________________________________" << endl;
     cout << "Name\t\tAmount in Stock\t Price per Stem\n\n";
 	cout << "_______________________________________________\n\n";
@@ -81,29 +82,131 @@ void ordering( )
         cout << db[i].FName;
 		NSize = strlen(db[i].FName);
 		if ( NSize < 8)
-			cout <<"\t\t"<< db[i].amount<<"\t\t";
-		else if (NSize >= 15)
-			cout <<"\t"<< db[i].amount<<"\t\t";
+			cout <<"\t\t"<< fixed << showpoint << setprecision(2) << "$ "  << db[i].price<< endl;
+		else if (NSize >= 16)
+			cout <<"\t"<< fixed << showpoint << setprecision(2) << "$ "  << db[i].price<< endl;
 		else
-			cout <<"\t\t"<< db[i].amount<<"\t\t";
-		cout<< fixed << showpoint << setprecision(2) << "$ " << db[i].price<< endl;
+			cout <<"\t\t"<< fixed << showpoint << setprecision(2) << "$ "  << db[i].price<< endl;
+		
     }
-	cout << "How many bouquets would you like to order? ";
+	cout << "\n\nHow many bouquets would you like to order? ";
 	cin >> num;
-	Order *ptr = new Order[num];
+	Order *oR = new Order[num];
+	string *N = new string[num];
+	int *T = new int[num];
+	
 
+	cout << "\nFrom the list above enter the number of the boquet you wish to buy. ";
+	for (int i =0;i < num; i++)
+	{
+		cout << "\nChoice : " << i+1 << "   " ;
+		cin >> choice;
+		switch(choice)
+		{
+		case 1: *(N+i) = "Alstroemeria"; *(T+i) = 40; break;
+			case 2: *(N+i) = "Agapanthus"; *(T+i) = 68; break;
+			case 3: *(N+i) = "Amaryllis"; *(T+i) = 160; break;
+			case 4: *(N+i) = "Aster"; *(T+i) = 44; break;
+			case 5: *(N+i) = "Bird of Paradise"; *(T+i) = 80; break;
+			case 6: *(N+i) = "Calla"; *(T+i) = 80; break;
+			case 7: *(N+i) = "Carnation"; *(T+i) = 15; break;
+			case 8: *(N+i) = "Chrysanthemum"; *(T+i) = 30; break;
+			case 9: *(N+i) = "Daffodil"; *(T+i) = 20; break;
+			case 10: *(N+i) = "Dasiy"; *(T+i) = 20; break;
+			case 11: *(N+i) = "Delphinium"; *(T+i) = 50; break;
+			case 12: *(N+i) = "Ginger (Red)"; *(T+i) = 80;  break;
+			case 13: *(N+i) = "Gardenia"; *(T+i) = 180; break;
+			case 14: *(N+i) = "Gladiolus"; *(T+i) = 70; break;
+			case 15: *(N+i) = "Iris"; *(T+i) = 40; break;
+			case 16: *(N+i) = "Lily"; *(T+i) = 80; break;
+			case 17: *(N+i) = "Orchid"; *(T+i) = 430; break;
+			case 18: *(N+i) = "Rose"; *(T+i) = 40;  break;
+			case 19: *(N+i) = "Sunflower"; *(T+i) = 75; break;
+			case 20: *(N+i) = "Tulip"; *(T+i) = 50; break;
+		}
+	}
+	for ( int i =0;i < num; i++)
+		total+= *(T+i);
+	cin.ignore();
+	cout <<"Please enter the name for who the flowers are for. ";
+	cin.getline(oR->to, 25);
+	cout << "Please enter the name of the sender. ";
+	cin.getline(oR->from, 25);
+	cout << "Would you like to send a message with the flowers? (Y/N) ";
+	cin >> oR->Msg;
+	if(oR->Msg == 'Y' ||oR->Msg == 'y' )
+	{
+		cin.ignore();
+		cout << "Please enter a message no more than 100 characters.\n";
+		cin.getline(oR->msg, 100);
+		
+	}
+	else if(toupper(oR->Msg) == 'N')
+	{
+		cout << "We'll skip the message then.";
+		strncpy(oR->msg, noMsg, 11);
+	}
+	else
+		cout << "That answer was not understood.";
 
+	cout << "\nWould you like to have these delivered?(Y/N) ";
+	cout << "\nThe fee will be $ 3.00 \n";
+	cin >> oR->delivery;
+	if(toupper(oR->delivery) == 'Y')
+	{
+		cin.ignore();
+		cout << "What is the address for the flowers to be delievered to. \n";
+		cin.getline(oR->address, 40);
+		total += 3; 
+		cout <<"Total: "<< total;
+	}
+	else if(toupper(oR->delivery) == 'N')
+	{
+		cout << "\nTotal: $" << total;
+		strncpy(oR->address, noDel, 20);
+	}
+	else
+		cout << "That answer was not understood.";
+	cout << "\nWould you like to place this order? (Y/N)";
+	cin >> oR->save;
+	if(toupper(oR->save) == 'Y')
+	{
+		file.open("Order.txt", ios::out | ios::app);
+			if (file.fail())
+		{
+			cout << "Error opening file.\n";
+		}
+		else
+		{
+			file << "To: " << oR->to <<"\nFrom: " << oR->from;
+			file << "\nAddress: " << oR->address;
+			file << "\nMessage: " << oR->msg;
+			file << "\nFlowers: " ;
+			for (int i =0;i<num;i++)
+				file << *(N+i) << endl;
+			file << "Total: $" << total;
+			file << endl << endl;
+			cout <<"Your order was saved.\n";
 
+			file.close();
+		}
+	}
 
-
-
-
-
-
-
-
+	else if(toupper(oR->save) == 'N')
+	{
+		cout << "Order not saved. \n";
+		
+	}
+	else
+		cout << "That wasnt understood.";
+	delete []N;
+	delete []T;
+	delete []oR;	
+	
+		
 
 }
+// a function to sspecial order what the store does not carry.
 
 void SpOrder()
 {
@@ -150,7 +253,7 @@ void SpOrder()
 	
 	cout <<"Please enter you phone number (ex: 9511234567) ";
 	cin >> phone;
-	cout << "\n\Special Order:\n\n";
+	cout << "\nSpecial Order:\n\n";
 	cout << "Name:" << ptr->recipient << endl <<"Address:"<< ptr->address << endl;
 	cout << "Phone Number: "<< phone <<endl <<"Flowers: ";
 	for ( int i =0;i < SpOrder; i++)
@@ -183,31 +286,32 @@ void SpOrder()
 		{
 			cout << "Error opening file.\n";
 		}
-	else
-	{
-		file  <<"\nName: " <<ptr->recipient << endl << "Address: "<<ptr->address
-			<< endl << "Phone: " << phone <<endl; 
-		for ( int i =0;i < SpOrder; i++)
+		else
 		{
-			file << "Flower: " << *(F+i) << endl;
-			file << "Amount: "<< *(SPtr+i) << endl;
-			file << "Color: " << *(C+i) << endl;;
-		}
-		cout <<"Your order was saved.\n";
+			file  <<"\nName: " <<ptr->recipient << endl << "Address: "<<ptr->address
+				<< endl << "Phone: " << phone <<endl; 
+			for ( int i =0;i < SpOrder; i++)
+			{
+				file << "Flower: " << *(F+i) << endl;
+				file << "Amount: "<< *(SPtr+i) << endl;
+				file << "Color: " << *(C+i) << endl;;
+			}
+			cout <<"Your order was saved.\n";
 
-		file.close();
-	}
+			file.close();
+		}
 
 	}
 	else if (ptr->answer == 'N' || ptr->answer == 'n')
 	{
-		delete SPtr;
-		delete ptr;
-		delete F;
-		delete C;
+		cout << "Order not saved\n";
 	}
 	else
 	cout << "That answer was not recognized.";
+		delete [] SPtr;
+		delete [] ptr;
+		delete [] F;
+		delete [] C;
 }
 // This function presents a list of wedding packages and their contents
 //and lets the user enter their choice and leave a phone number
@@ -288,12 +392,4 @@ void WPack()
 	else
 		cout <<"That was not recognized";
 	
-	
-	
-
-
 }
-//void FPack()
-//{}
-
-
