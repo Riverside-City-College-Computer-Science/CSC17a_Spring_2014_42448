@@ -13,6 +13,7 @@ using namespace std;
 
 //our Libraries
 #include "card.h"
+#include "Deck.h"
 
 //Global variables and constants
 
@@ -24,6 +25,7 @@ int main(int argc, char** argv) {
     //declare variables
     int nCards=52;
     Card **card=new Card*[nCards];
+    Deck deck(nCards);
     
     //Check out all the cards
     //ouput name, suit, value, then number

@@ -34,6 +34,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Deck.o \
 	${OBJECTDIR}/Card.o \
 	${OBJECTDIR}/main.o
 
@@ -61,6 +62,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/deck_of_cards.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/deck_of_cards ${OBJECTFILES} ${LDLIBSOPTIONS} 
+
+${OBJECTDIR}/Deck.o: Deck.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Deck.o Deck.cpp
 
 ${OBJECTDIR}/Card.o: Card.cpp 
 	${MKDIR} -p ${OBJECTDIR}
