@@ -1,0 +1,5 @@
+*******TO-DO********
+use fill socres to populatlist from file w/ previous high scores
+turn high scores into a struct with initials level and attempts variables
+use array of high scores structs to store scores until game ends
+	//in game hs maybe higher than recorded one, so display
