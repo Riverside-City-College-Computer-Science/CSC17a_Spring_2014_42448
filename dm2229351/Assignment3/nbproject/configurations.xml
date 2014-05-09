@@ -6,8 +6,11 @@
                    projectFiles="true">
       <itemPath>Car.h</itemPath>
       <itemPath>Date.h</itemPath>
+      <itemPath>DayOfYear.h</itemPath>
       <itemPath>Employee.h</itemPath>
+      <itemPath>Numbers.h</itemPath>
       <itemPath>Person.h</itemPath>
+      <itemPath>RetailItem.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -18,10 +21,11 @@
                    projectFiles="true">
       <itemPath>Car.cpp</itemPath>
       <itemPath>Date.cpp</itemPath>
+      <itemPath>DayOfYear.cpp</itemPath>
       <itemPath>Employee.cpp</itemPath>
+      <itemPath>Numbers.cpp</itemPath>
       <itemPath>Person.cpp</itemPath>
       <itemPath>RetailItem.cpp</itemPath>
-      <itemPath>RetailItem.h</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -54,9 +58,17 @@
       </item>
       <item path="Date.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="DayOfYear.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DayOfYear.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Employee.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Employee.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Numbers.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Numbers.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Person.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -97,9 +109,17 @@
       </item>
       <item path="Date.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="DayOfYear.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DayOfYear.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Employee.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Employee.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Numbers.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Numbers.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Person.cpp" ex="false" tool="1" flavor2="0">
       </item>

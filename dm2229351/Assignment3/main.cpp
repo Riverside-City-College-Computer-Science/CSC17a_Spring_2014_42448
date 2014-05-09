@@ -12,6 +12,8 @@ using namespace std;
 #include "Employee.h"
 #include "Person.h"
 #include "RetailItem.h"
+#include "Numbers.h"
+#include "DayOfYear.h"
 
 //Global Constants Here!!!
 
@@ -54,16 +56,16 @@ int main(int argv,char *argc[]){
 
 void Menu(){
     cout<<"\nMenu for the Midterm"<<endl;
-    cout<<"Type 1 for problem 1"<<endl;
-    cout<<"Type 2 for problem 2"<<endl;
-    cout<<"Type 3 for problem 3"<<endl;
-    cout<<"Type 4 for problem 4"<<endl;
-    cout<<"Type 5 for problem 5"<<endl;
-    cout<<"Type 6 for problem 6"<<endl;
-    cout<<"Type 3 for problem 7"<<endl;
-    cout<<"Type 4 for problem 8"<<endl;
-    cout<<"Type 5 for problem 9"<<endl;
-    cout<<"Type 6 for problem 10"<<endl;
+    cout<<"Type 1 for problem 10-1"<<endl;
+    cout<<"Type 2 for problem 10-2"<<endl;
+    cout<<"Type 3 for problem 10-3"<<endl;
+    cout<<"Type 4 for problem 10-4"<<endl;
+    cout<<"Type 5 for problem 10-5"<<endl;
+    cout<<"Type 6 for problem 11-1"<<endl;
+    cout<<"Type 7 for problem 11-2"<<endl;
+    cout<<"Type 8 for problem 11-3"<<endl;
+    cout<<"Type 9 for problem 11-4"<<endl;
+    cout<<"Type 10 for problem 11-5"<<endl;
     cout<<"Type anything else to exit \n"<<endl;
 }
 
@@ -74,7 +76,7 @@ int getN(){
 }
 
 void problem1(){
-    cout<<"In problem # 1"<<endl<<endl;
+    cout<<"In problem # 10-1"<<endl<<endl;
     int day=-1, month=-1, year=-1;
     while((month<1 || month >12))
     {
@@ -97,7 +99,7 @@ void problem1(){
 }
 
 void problem2(){
-    cout<<"In problem # 2"<<endl<<endl;
+    cout<<"In problem # 10-2"<<endl<<endl;
     Employee emp1("Susan Meyes",47899,"Accounting","Vice President");
     Employee emp2("Mark Jones",39119,"IT","Programmer");
     Employee emp3("Joy Rogers",81774,"Manufacturing","Engineer");
@@ -108,7 +110,7 @@ void problem2(){
 }
 
 void problem3(){
-    cout<<"In problem # 3"<<endl<<endl;
+    cout<<"In problem # 10-3"<<endl<<endl;
     Car car(2006,"Chrysler 300");
     for(int i=0;i<5;i++)
     {
@@ -123,7 +125,7 @@ void problem3(){
 }
 
 void problem4(){
-    cout<<"In problem # 4"<<endl<<endl;
+    cout<<"In problem # 10-4"<<endl<<endl;
     Person me("Diego Montelongo", 31, "12533 Black Horse St", "909-524-8487");
     me.print();
     Person friend1("Uni Aguilar",33,"1033 Cambrin Rd", "951-342-6578");
@@ -133,7 +135,7 @@ void problem4(){
 }
 
 void problem5(){
-    cout<<"In problem # 5"<<endl<<endl;
+    cout<<"In problem # 10-5"<<endl<<endl;
     RetailItem r1("Jacket", 12, 59.95);
     RetailItem r2("Designer Jeans", 40, 34.95);
     RetailItem r3("Shirt", 20, 24.95);
@@ -144,23 +146,56 @@ void problem5(){
 }
 
 void problem6(){
-        cout<<"In problem # 6"<<endl<<endl;
+    int number=-1;
+        cout<<"In problem # 11-1"<<endl<<endl;
+        while(number<0 || number>9999)
+        {
+            cout << "Please enter a number from 0 to 9999\n";
+            cin >> number;
+        }
+    Numbers num1(number);
+    num1.print();
 }
 
 void problem7(){
-        cout<<"In problem # 6"<<endl<<endl;
+        cout<<"In problem # 11-2"<<endl<<endl;
+            DayOfYear day1(45);
+    DayOfYear day2(85);
+    DayOfYear day3(125);
+    DayOfYear day4(165);
+    DayOfYear day5(254);
+    DayOfYear day6(365);
+    
+    day1.print();
+    day2.print();
+    day3.print();
+    day4.print();
+    day5.print();
+    day6.print();
 }
 
 void problem8(){
-        cout<<"In problem # 6"<<endl<<endl;
+        cout<<"In problem # 11-3"<<endl<<endl;
+        int number;
+        string month;
+        cout << "Please enter a day" << endl;
+        cin >> number;
+        cout << "Please enter a month" << endl;
+        cin >> month;
+        DayOfYear x(number,month);
+        cout << x.getDay() << " is the day" << endl;
+        x++;
+        cout << x.getDay() << " is the day after ++" << endl;
+        x--;
+        cout << x.getDay() << " is the day after --" << endl;
 }
 
 void problem9(){
-        cout<<"In problem # 6"<<endl<<endl;
+        cout<<"In problem # 11-4"<<endl<<endl;
 }
 
 void problem10(){
-        cout<<"In problem # 6"<<endl<<endl;
+        cout<<"In problem # 11-5"<<endl<<endl;
 }
 void def(int inN){
         cout<<"You typed "<<inN<<" to exit the program"<<endl;

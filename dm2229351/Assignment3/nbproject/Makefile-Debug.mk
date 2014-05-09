@@ -37,7 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Car.o \
 	${OBJECTDIR}/Date.o \
+	${OBJECTDIR}/DayOfYear.o \
 	${OBJECTDIR}/Employee.o \
+	${OBJECTDIR}/Numbers.o \
 	${OBJECTDIR}/Person.o \
 	${OBJECTDIR}/RetailItem.o \
 	${OBJECTDIR}/main.o
@@ -77,10 +79,20 @@ ${OBJECTDIR}/Date.o: Date.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Date.o Date.cpp
 
+${OBJECTDIR}/DayOfYear.o: DayOfYear.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DayOfYear.o DayOfYear.cpp
+
 ${OBJECTDIR}/Employee.o: Employee.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Employee.o Employee.cpp
+
+${OBJECTDIR}/Numbers.o: Numbers.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Numbers.o Numbers.cpp
 
 ${OBJECTDIR}/Person.o: Person.cpp 
 	${MKDIR} -p ${OBJECTDIR}
