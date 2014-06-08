@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
             cout.flush()<<" was the code"<<endl;
             Sleep(500);
             
-            if(win==true){
+            if(win==false){
             //press enter to continue
             cout<<"Press ENTER to continue..."<<endl;
             cin.get();
@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
             }
             
             //send player to high scores function
-            if(win==false){
+            if(win==true){
                 
                 score(ply);
             
