@@ -1,0 +1,6 @@
+Instruction:
+For each player, he first chooses which difficulty level he wants: easy or hard. He takes 5 cards from a deck of poker cards which have 52 cards(no jokers). Then, he gets a chance to change as many cards as he wants from those 5 cards. After changing cards, he will win or lose according his final cards result.
+Easy level:  The user wins if he gets three of a kind, 4 of a kind, 5 of a kind, two pair, or full house; otherwise, the user loses.
+Hard level:   The user wins if he gets three of a kind, 4 of a kind, 5 of a kind, two pair, or full house; otherwise, the user loses. $
+
+

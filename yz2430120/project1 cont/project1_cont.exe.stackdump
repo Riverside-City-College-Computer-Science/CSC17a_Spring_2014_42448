@@ -1,0 +1,7 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=61110253
+eax=BE9D2950 ebx=6168C184 ecx=0C2D0B43 edx=20058368 esi=20000000 edi=2005EAD4
+ebp=BE9D2950 esp=0022AB60 program=C:\Users\lenovo\Desktop\CSC-17A\project1 cont\dist\Debug\Cygwin-Windows\project1_cont.exe, pid 6052, thread main
+cs=001B ds=0023 es=0023 fs=003B gs=0000 ss=0023
+Stack trace:
+Frame     Function  Args
+End of stack trace
