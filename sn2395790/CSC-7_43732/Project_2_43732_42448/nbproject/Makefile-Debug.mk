@@ -21,8 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=Cygwin_4.x_1-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=Cygwin_4.x-Windows
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,9 +34,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/GeneralHashFunctions.o \
-	${OBJECTDIR}/UserInfo.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/UserInfo.o
 
 
 # C Compiler Flags
@@ -62,22 +61,22 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project_2_43732_42448.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project_2_43732_42448 ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/GeneralHashFunctions.o: GeneralHashFunctions.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GeneralHashFunctions.o GeneralHashFunctions.cpp
-
-${OBJECTDIR}/UserInfo.o: UserInfo.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UserInfo.o UserInfo.cpp
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project_2_43732_42448 ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/GeneralHashFunctions.o: GeneralHashFunctions.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/GeneralHashFunctions.o GeneralHashFunctions.cpp
+
+${OBJECTDIR}/UserInfo.o: UserInfo.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/UserInfo.o UserInfo.cpp
 
 # Subprojects
 .build-subprojects:

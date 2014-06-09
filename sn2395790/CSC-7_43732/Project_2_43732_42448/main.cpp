@@ -204,11 +204,11 @@ int main(int argc, char** argv) {
                 //Proccess decryption or rewriting of secret message
                 if(choice=='1'){
                     cout<<"Encrypted message:"<<endl;
-                    cout<<user[slot].msg<<endl;
+                    cout<<user[slot-1].msg<<endl;
                     cout<<"Decrypted message:"<<endl;
                     
                     //decrpytion
-                    msg = user[slot].msg;
+                    msg = user[slot-1].msg;
                     for (int i=0;i<msg.length();i++){
                          if(i%2==0){
                             msg[i]-=28;
@@ -250,8 +250,8 @@ int main(int argc, char** argv) {
                              msg[i]+=37;
                         }
                     }
-                    user[slot].msg = msg;
-                    current.setMsg(user[slot].msg);
+                    user[slot-1].msg = msg;
+                    current.setMsg(user[slot-1].msg);
                     
                     //rewrite file using write function
                     //write(user[slot].name,user[slot].pword, slot+1,user[slot].msg);
