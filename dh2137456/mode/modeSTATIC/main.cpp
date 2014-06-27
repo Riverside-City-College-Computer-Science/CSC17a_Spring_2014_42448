@@ -33,6 +33,7 @@ int main(int argc, char** argv) {
     //Print copied array
     prntAry(brray, SIZE, 10);
     //count the numbers
+    cout<<endl;
     cout<<"The max freq in the array = "<<maxFreq(brray, SIZE);
     //Exit
     return 0;
